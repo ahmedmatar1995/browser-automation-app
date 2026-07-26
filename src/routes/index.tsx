@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: Home })
@@ -8,7 +7,6 @@ function Home() {
     <div className="p-8">
       <div>
         <p>tanstack start</p>
-        <Button>click me</Button>
       </div>
     </div>
   )
