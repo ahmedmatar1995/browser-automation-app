@@ -13,7 +13,7 @@
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
-    "start": "node .output/server/index.mjs"
+    "start": "srvx serve --entry ./dist/server/server.js --dir . --static ./dist/client --prod"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
