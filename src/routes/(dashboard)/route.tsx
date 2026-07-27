@@ -15,7 +15,7 @@ function RouteComponent() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset className="bg-[#1B1B1B]!">
+      <SidebarInset className="bg-[#1B1B1B]! m-0! md:m-0!">
         <Outlet />
       </SidebarInset>
     </SidebarProvider>
