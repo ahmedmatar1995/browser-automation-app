@@ -15,8 +15,7 @@ function RouteComponent() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset>
-        <SidebarTrigger className="ml-1 mt-1" />
+      <SidebarInset className="bg-[#1B1B1B]! py-2!">
         <Outlet />
       </SidebarInset>
     </SidebarProvider>

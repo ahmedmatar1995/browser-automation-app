@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "skills": {
+    "include": [
+      "clerk",
+      "clerk-backend-api",
+      "clerk-billing",
+      "clerk-cli",
+      "clerk-custom-ui",
+      "clerk-orgs",
+      "clerk-setup",
+      "clerk-tanstack-patterns",
+      "clerk-testing",
+      "clerk-webhooks",
+      "frontend-design",
+      "webapp-testing",
+      "stop-slop",
+      "find-skills"
+    ]
+  }
+}
