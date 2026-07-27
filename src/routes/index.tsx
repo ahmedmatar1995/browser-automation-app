@@ -1,17 +1,20 @@
-import { Button } from '@/components/ui/button'
+import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/tanstack-react-start'
 import { createFileRoute } from '@tanstack/react-router'
-import { toast } from 'sonner'
 
 export const Route = createFileRoute('/')({ component: Home })
 
 function Home() {
   return (
     <div className="p-8">
-      <div>
+      <div className="flex items-center gap-4">
         <p>tanstack start</p>
-        <Button onClick={() => toast('Hello from TanStack Start!')}>
-          click
-        </Button>
+        <Show when="signed-in">
+          <UserButton />
+        </Show>
+        <Show when="signed-out">
+          <SignInButton />
+          <SignUpButton />
+        </Show>
       </div>
     </div>
   )
