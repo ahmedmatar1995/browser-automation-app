@@ -38,7 +38,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider afterSignOutUrl="/sign-in">{children}</ClerkProvider>
         <Toaster />
         <TanStackDevtools
           config={{

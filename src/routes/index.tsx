@@ -1,20 +1,22 @@
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/tanstack-react-start'
-import { createFileRoute } from '@tanstack/react-router'
+import { auth } from '@clerk/tanstack-react-start/server'
+import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createServerFn } from '@tanstack/react-start'
 
-export const Route = createFileRoute('/')({ component: Home })
+export const checkAuth = createServerFn().handler(async () => {
+  const { isAuthenticated } = await auth()
+  if (!isAuthenticated) throw redirect({ to: '/sign-in/$' })
+})
+
+export const Route = createFileRoute('/')({
+  component: Home,
+  beforeLoad: async () => await checkAuth(),
+})
 
 function Home() {
   return (
     <div className="p-8">
       <div className="flex items-center gap-4">
         <p>tanstack start</p>
-        <Show when="signed-in">
-          <UserButton />
-        </Show>
-        <Show when="signed-out">
-          <SignInButton />
-          <SignUpButton />
-        </Show>
       </div>
     </div>
   )
