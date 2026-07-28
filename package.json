@@ -13,13 +13,18 @@
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
-    "start": "srvx serve --entry ./dist/server/server.js --dir . --static ./dist/client --prod"
+    "start": "srvx serve --entry ./dist/server/server.js --dir . --static ./dist/client --prod",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
     "@clerk/tanstack-react-start": "^1.4.23",
     "@clerk/themes": "^2.4.57",
     "@hookform/resolvers": "^5.5.7",
+    "@neondatabase/serverless": "^1.1.0",
     "@shadcn/react": "^0.2.1",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "latest",
@@ -30,6 +35,8 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^4.4.0",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.577.0",
