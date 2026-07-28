@@ -15,6 +15,7 @@ import { Route as authChooseOrganizationRouteImport } from './routes/(auth)/choo
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as dashboardIndexRouteImport } from './routes/(dashboard)/index'
+import { Route as dashboardWorkflowsIdIndexRouteImport } from './routes/(dashboard)/workflows/$id/index'
 
 const authRouteRoute = authRouteRouteImport.update({
   id: '/(auth)',
@@ -44,18 +45,26 @@ const dashboardIndexRoute = dashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => dashboardRouteRoute,
 } as any)
+const dashboardWorkflowsIdIndexRoute =
+  dashboardWorkflowsIdIndexRouteImport.update({
+    id: '/workflows/$id/',
+    path: '/workflows/$id/',
+    getParentRoute: () => dashboardRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/choose-organization': typeof authChooseOrganizationRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
   '/': typeof dashboardIndexRoute
+  '/workflows/$id/': typeof dashboardWorkflowsIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/choose-organization': typeof authChooseOrganizationRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
   '/': typeof dashboardIndexRoute
+  '/workflows/$id': typeof dashboardWorkflowsIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -65,12 +74,14 @@ export interface FileRoutesById {
   '/(auth)/sign-in': typeof authSignInRoute
   '/(auth)/sign-up': typeof authSignUpRoute
   '/(dashboard)/': typeof dashboardIndexRoute
+  '/(dashboard)/workflows/$id/': typeof dashboardWorkflowsIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/choose-organization' | '/sign-in' | '/sign-up' | '/'
+  fullPaths:
+    '/choose-organization' | '/sign-in' | '/sign-up' | '/' | '/workflows/$id/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/choose-organization' | '/sign-in' | '/sign-up' | '/'
+  to: '/choose-organization' | '/sign-in' | '/sign-up' | '/' | '/workflows/$id'
   id:
     | '__root__'
     | '/(auth)'
@@ -79,6 +90,7 @@ export interface FileRouteTypes {
     | '/(auth)/sign-in'
     | '/(auth)/sign-up'
     | '/(dashboard)/'
+    | '/(dashboard)/workflows/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,6 +142,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof dashboardIndexRouteImport
       parentRoute: typeof dashboardRouteRoute
     }
+    '/(dashboard)/workflows/$id/': {
+      id: '/(dashboard)/workflows/$id/'
+      path: '/workflows/$id'
+      fullPath: '/workflows/$id/'
+      preLoaderRoute: typeof dashboardWorkflowsIdIndexRouteImport
+      parentRoute: typeof dashboardRouteRoute
+    }
   }
 }
 
@@ -151,10 +170,12 @@ const authRouteRouteWithChildren = authRouteRoute._addFileChildren(
 
 interface dashboardRouteRouteChildren {
   dashboardIndexRoute: typeof dashboardIndexRoute
+  dashboardWorkflowsIdIndexRoute: typeof dashboardWorkflowsIdIndexRoute
 }
 
 const dashboardRouteRouteChildren: dashboardRouteRouteChildren = {
   dashboardIndexRoute: dashboardIndexRoute,
+  dashboardWorkflowsIdIndexRoute: dashboardWorkflowsIdIndexRoute,
 }
 
 const dashboardRouteRouteWithChildren = dashboardRouteRoute._addFileChildren(

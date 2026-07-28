@@ -4,7 +4,7 @@ import { createFileRoute, redirect } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
 
 const authStateFn = createServerFn({ method: 'GET' }).handler(async () => {
-  const { isAuthenticated, orgId } = await auth()
+  const { isAuthenticated } = await auth()
 
   if (!isAuthenticated) {
     throw redirect({ to: '/sign-in' })

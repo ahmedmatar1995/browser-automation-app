@@ -1,8 +1,15 @@
 'use client'
 
-import { OrganizationSwitcher, UserButton } from '@clerk/tanstack-react-start'
+import {
+  useAuth,
+  OrganizationSwitcher,
+  UserButton,
+} from '@clerk/tanstack-react-start'
+import { useEffect, useState } from 'react'
 
+import { listWorkflowsServerFn } from '@/features/Workflows/actions'
 import { WorkflowNav } from '@/features/Workflows/component/WorkflowNav.tsx'
+import type { Workflow } from '@/lib/db/schema'
 import {
   Sidebar,
   SidebarContent,
@@ -12,6 +19,17 @@ import {
 } from '@/components/ui/sidebar.tsx'
 
 export function AppSidebar() {
+  const { orgId } = useAuth()
+  const [workflows, setWorkflows] = useState<Workflow[]>([])
+
+  useEffect(() => {
+    if (!orgId) {
+      setWorkflows([])
+      return
+    }
+    listWorkflowsServerFn({ data: { orgId } }).then(setWorkflows)
+  }, [orgId])
+
   return (
     <Sidebar
       collapsible="icon"
@@ -52,7 +70,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
       <SidebarContent className="relative px-2 pb-3 bg-[radial-gradient(circle_at_0_0,rgba(167,139,250,0.1),transparent_26rem)] py-2">
-        <WorkflowNav />
+        <WorkflowNav workflows={workflows} />
       </SidebarContent>
       <SidebarFooter className="m-3 mt-auto rounded-2xl p-2 group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:border-0 group-data-[collapsible=icon]:bg-transparent group-data-[collapsible=icon]:p-0">
         <UserButton

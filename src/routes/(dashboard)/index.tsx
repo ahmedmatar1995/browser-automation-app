@@ -4,7 +4,6 @@ import { createServerFn } from '@tanstack/react-start'
 import { Plus, Workflow } from 'lucide-react'
 
 import { Button } from '@/components/ui/button.tsx'
-import { ModeToggle } from '@/components/theme-toggle'
 
 export const checkAuth = createServerFn().handler(async () => {
   const { isAuthenticated, orgId } = await auth()
