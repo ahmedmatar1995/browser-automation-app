@@ -49,6 +49,10 @@ export function WorkflowNav() {
           align="start"
           sideOffset={12}
           className="w-80 border-white/10 bg-[#17171d] p-2 text-white shadow-[0_18px_50px_rgba(0,0,0,0.45)]"
+          style={{
+            '--sidebar-accent': '#24242c',
+            '--sidebar-accent-foreground': '#ffffff',
+          } as React.CSSProperties}
         >
           <WorkflowHeader />
           <WorkflowList />
