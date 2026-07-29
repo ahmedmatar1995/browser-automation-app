@@ -18,23 +18,23 @@ export const Route = createFileRoute('/(dashboard)/')({
 
 function Home() {
   return (
-    <div className="flex flex-1 items-center justify-center bg-[#1b1b1f] px-6 py-16">
+    <div className="flex flex-1 items-center justify-center bg-background px-6 py-16">
       <section className="w-full max-w-lg text-center">
-        <div className="mx-auto grid size-16 place-items-center rounded-2xl border border-violet-200/15 bg-violet-400/10 text-violet-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+        <div className="mx-auto grid size-16 place-items-center rounded-2xl border border-primary/15 bg-primary/10 text-primary shadow-[inset_0_1px_0_var(--border)]">
           <Workflow className="size-7" strokeWidth={1.5} />
         </div>
-        <p className="mt-7 text-[10px] font-extrabold tracking-[0.16em] text-violet-200/60 uppercase">
+        <p className="mt-7 text-[10px] font-extrabold tracking-[0.16em] text-muted-foreground uppercase">
           Workflow library
         </p>
-        <h1 className="mt-3 font-[Fraunces,serif] text-4xl font-medium tracking-[-0.04em] text-[#f7f4ff] sm:text-5xl">
+        <h1 className="mt-3 font-[Fraunces,serif] text-4xl font-medium tracking-[-0.04em] text-foreground sm:text-5xl">
           No workflow selected
         </h1>
-        <p className="mx-auto mt-4 max-w-sm text-base leading-7 text-white/50">
+        <p className="mx-auto mt-4 max-w-sm text-base leading-7 text-muted-foreground">
           Choose a workflow from the sidebar, or start a new one from scratch.
         </p>
         <Button
           size="lg"
-          className="mt-8 h-12 rounded-xl bg-violet-300 px-5 text-sm font-extrabold text-[#17151e] shadow-[0_12px_30px_rgba(139,92,246,0.24)] transition-all hover:-translate-y-0.5 hover:bg-violet-200"
+          className="mt-8 h-12 rounded-xl bg-primary px-5 text-sm font-extrabold text-primary-foreground shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary/90"
         >
           Create workflow <Plus className="size-4" />
         </Button>

@@ -9,8 +9,9 @@ type Props = PropsWithChildren<{ theme: Theme }>
 const ThemeContext = createContext<ThemeContextVal | null>(null)
 
 function applyTheme(val: Theme) {
-  document.documentElement.dataset.theme = val
-  document.documentElement.className = val
+  const root = document.documentElement
+  root.className = val
+  root.dataset.theme = val
 }
 
 export function ThemeProvider({ children, theme: initialTheme }: Props) {
@@ -18,11 +19,10 @@ export function ThemeProvider({ children, theme: initialTheme }: Props) {
 
   useEffect(() => {
     applyTheme(theme)
-  }, [])
+  }, [theme])
 
   function setTheme(val: Theme) {
     setThemeState(val)
-    applyTheme(val)
     setThemeServerFn({ data: val })
   }
 

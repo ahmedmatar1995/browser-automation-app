@@ -35,19 +35,7 @@ export function AppSidebar() {
     <Sidebar
       collapsible="icon"
       variant="inset"
-      className="border-r border-white/[0.07] shadow-[16px_0_50px_rgba(0,0,0,0.18)]"
-      style={
-        {
-          '--sidebar': 'var(--sidebar-bg)',
-          '--sidebar-foreground': 'var(--sidebar-fg)',
-          '--sidebar-primary': '#a78bfa',
-          '--sidebar-primary-foreground': '#121217',
-          '--sidebar-accent': 'var(--sidebar-accent-bg)',
-          '--sidebar-accent-foreground': 'var(--sidebar-fg)',
-          '--sidebar-border': 'rgba(255, 255, 255, 0.08)',
-          '--sidebar-ring': '#c4b5fd',
-        } as React.CSSProperties
-      }
+      className="border-r border-sidebar-border shadow-[16px_0_50px_rgba(0,0,0,0.08)] dark:shadow-[16px_0_50px_rgba(0,0,0,0.18)]"
     >
       <SidebarHeader className="px-3 pt-3 pb-2">
         <div className="flex items-center justify-center gap-2 group-data-[collapsible=icon]:gap-0">
@@ -61,16 +49,16 @@ export function AppSidebar() {
                 organizationSwitcherTrigger:
                   'h-13 w-full! rounded-2xl px-2.5! transition-colors group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:justify-center! group-data-[collapsible=icon]:p-0! group-data-[collapsible=icon]:hidden!',
                 organizationPreviewMainIdentifier:
-                  'text-[15px]! font-bold! tracking-[-0.02em]! text-white! group-data-[collapsible=icon]:hidden! capitalize!',
+                  'text-[15px]! font-bold! tracking-[-0.02em]! text-sidebar-foreground! group-data-[collapsible=icon]:hidden! capitalize!',
                 organizationSwitcherTriggerIcon:
-                  'text-white/55! group-data-[collapsible=icon]:hidden!',
+                  'text-sidebar-foreground/55! group-data-[collapsible=icon]:hidden!',
               },
             }}
           />
-          <SidebarTrigger className="size-4 text-white hover:opacity-90 transition-all hover:text-white/60 duration-200" />
+          <SidebarTrigger className="size-4 text-sidebar-foreground transition-all duration-200 hover:text-sidebar-foreground/60 hover:opacity-90" />
         </div>
       </SidebarHeader>
-      <SidebarContent className="relative px-2 pb-3 bg-[radial-gradient(circle_at_0_0,rgba(167,139,250,0.1),transparent_26rem)] py-2">
+      <SidebarContent className="relative px-2 pb-3 bg-[radial-gradient(circle_at_0_0,var(--sidebar-accent)/0.15,transparent_26rem)] py-2">
         <WorkflowNav workflows={workflows} />
       </SidebarContent>
       <SidebarFooter className="m-3 mt-auto rounded-2xl p-2 group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:border-0 group-data-[collapsible=icon]:bg-transparent group-data-[collapsible=icon]:p-0">
@@ -81,11 +69,11 @@ export function AppSidebar() {
           appearance={{
             elements: {
               rootBox:
-                'w-full bg-foreground/10 rounded-full p-2 flex items-center justify-center',
+                'w-full bg-sidebar-accent rounded-full p-2 flex items-center justify-center',
               userButtonTrigger:
-                'h-10 w-full rounded-xl px-1.5 py-1.5 transition-colors hover:bg-white/[0.07] group-data-[collapsible=icon]:justify-center flex-row-reverse!',
+                'h-10 w-full rounded-xl px-1.5 py-1.5 transition-colors hover:bg-sidebar-accent flex-row-reverse! group-data-[collapsible=icon]:justify-center',
               userButtonOuterIdentifier:
-                'text-sm! font-semibold! text-white/85! group-data-[collapsible=icon]:hidden flex-row-reverse',
+                'text-sm! font-semibold! text-sidebar-foreground/85! group-data-[collapsible=icon]:hidden flex-row-reverse',
             },
           }}
         />

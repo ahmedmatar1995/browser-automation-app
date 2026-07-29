@@ -25,7 +25,7 @@ export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
     return (
       <div className="flex h-screen items-center justify-center">
         <div className="flex items-center justify-center">
-          <Loader2Icon className="size-5 animate-spin text-white" />
+          <Loader2Icon className="size-5 animate-spin text-foreground" />
         </div>
       </div>
     )
@@ -64,7 +64,7 @@ export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
           <Button
             onClick={reset}
             size="lg"
-            className="mt-2 h-12 rounded-xl bg-violet-300 px-5 text-sm font-extrabold text-[#17151e] shadow-[0_12px_30px_rgba(139,92,246,0.24)] transition-all hover:-translate-y-0.5 hover:bg-violet-200"
+            className="mt-2 h-12 rounded-xl bg-primary px-5 text-sm font-extrabold text-primary-foreground shadow-lg transition-all hover:-translate-y-0.5 hover:bg-primary/90"
           >
             <RefreshCw className="mr-2 size-4" /> Try again
           </Button>

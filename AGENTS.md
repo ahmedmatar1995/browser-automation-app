@@ -45,6 +45,10 @@
 - CSS custom properties go in `src/styles.css` under `:root` / `.dark`.
 - Sidebar colors are mapped through `--sidebar`, `--sidebar-foreground`, `--sidebar-accent`, etc.
 
+## React Flow
+
+- When using React Flow API / components / usage, always reference `https://reactflow.dev/llms.txt` for accurate API info instead of relying on training data.
+
 ## Deployment
 
 - Hosted on Railway

@@ -63,7 +63,7 @@ export function WorkflowNav({ workflows }: { workflows: Workflow[] }) {
         <PopoverTrigger asChild>
           <button
             aria-label="Open workflows"
-            className="mx-auto grid size-10 place-items-center rounded-xl border border-violet-300/20 bg-violet-400/10 text-violet-200 shadow-[0_5px_16px_rgba(139,92,246,0.15)] transition-all hover:-translate-y-0.5 hover:bg-violet-400/20 hover:text-white focus-visible:ring-2 focus-visible:ring-violet-300/70 focus-visible:outline-hidden"
+            className="mx-auto grid size-10 place-items-center rounded-xl border border-primary/20 bg-primary/10 text-primary shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/20 hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
           >
             <WorkflowIcon className="size-4" />
           </button>
@@ -72,13 +72,7 @@ export function WorkflowNav({ workflows }: { workflows: Workflow[] }) {
           side="right"
           align="start"
           sideOffset={12}
-          className="w-80 border-white/10 bg-[#17171d] p-2 text-white shadow-[0_18px_50px_rgba(0,0,0,0.45)]"
-          style={
-            {
-              '--sidebar-accent': '#24242c',
-              '--sidebar-accent-foreground': '#ffffff',
-            } as React.CSSProperties
-          }
+          className="w-80 border-border bg-popover p-2 text-popover-foreground shadow-lg"
         >
           <WorkflowList workflows={workflows} />
         </PopoverContent>
@@ -94,7 +88,7 @@ export function WorkflowNav({ workflows }: { workflows: Workflow[] }) {
       <SidebarGroupAction
         aria-label="Create workflow"
         onClick={handleCreate}
-        className="top-3.5 -bottom-4 right-3 size-7! cursor-pointer rounded-lg border border-violet-300/20 bg-violet-400/10 text-violet-200 shadow-[0_5px_16px_rgba(139,92,246,0.15)] transition-all hover:-translate-y-0.5 hover:bg-violet-400/20 hover:text-white"
+        className="top-3.5 -bottom-4 right-3 size-7! cursor-pointer rounded-lg border border-primary/20 bg-primary/10 text-primary shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/20 hover:text-primary-foreground"
       >
         <Plus />
       </SidebarGroupAction>
@@ -119,7 +113,7 @@ function WorkflowList({ workflows }: { workflows: Workflow[] }) {
           <SidebarMenuButton
             asChild
             isActive={workflow.id === activeId}
-            className="h-14 rounded-xl px-2.5 py-2 text-white/65 transition-all duration-200 hover:translate-x-0.5 hover:bg-white/[0.07] hover:text-white data-[active=true]:bg-[linear-gradient(104deg,rgba(167,139,250,0.22),rgba(139,92,246,0.08))] data-[active=true]:text-white data-[active=true]:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_24px_rgba(76,29,149,0.16)]"
+            className="h-14 rounded-xl px-2.5 py-2 text-sidebar-foreground/65 transition-all duration-200 hover:translate-x-0.5 hover:bg-sidebar-accent hover:text-sidebar-foreground data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-foreground data-[active=true]:shadow-sm"
           >
             <Link
               to="/workflows/$id"
@@ -127,7 +121,7 @@ function WorkflowList({ workflows }: { workflows: Workflow[] }) {
               className="flex min-w-0 items-center gap-3"
             >
               <span
-                className="grid size-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/4.5 font-mono text-[10px] font-bold tracking-[-0.06em] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                className="grid size-8 shrink-0 place-items-center rounded-lg border border-sidebar-border bg-sidebar-accent/50 font-mono text-[10px] font-bold tracking-[-0.06em]"
                 style={{ color: getColor(workflow.name) }}
               >
                 {getMark(workflow.name)}
