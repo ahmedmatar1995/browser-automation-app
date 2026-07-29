@@ -20,7 +20,7 @@ export function RightSidebar() {
   })
 
   return (
-    <div className="flex size-full flex-col items-center justify-center gap-4 bg-[#111114]">
+    <div className="flex size-full flex-col items-center justify-center gap-4 bg-card">
       <Button
         disabled={isLoading}
         onClick={async () => {

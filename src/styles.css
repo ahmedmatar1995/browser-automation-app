@@ -7,6 +7,10 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --sidebar-bg: #eef2f5;
+  --sidebar-fg: #1a1a2e;
+  --sidebar-accent-bg: #e2e8f0;
+
   --sea-ink: #173a40;
   --sea-ink-soft: #416166;
   --lagoon: #4fb8b2;
@@ -62,7 +66,12 @@
   --sidebar-ring: oklch(0.871 0.006 286.286);
 }
 
-.dark {
+.dark,
+[data-theme="dark"] {
+  --sidebar-bg: #111114;
+  --sidebar-fg: #f7f7fb;
+  --sidebar-accent-bg: #24242c;
+
   --sea-ink: #d7ece8;
   --sea-ink-soft: #afcdc8;
   --lagoon: #60d7cf;

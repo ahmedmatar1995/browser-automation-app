@@ -5,6 +5,7 @@ import {
   OrganizationSwitcher,
   UserButton,
 } from '@clerk/tanstack-react-start'
+import { ModeToggle } from '@/components/theme-toggle'
 import { useEffect, useState } from 'react'
 
 import { listWorkflowsServerFn } from '@/features/Workflows/actions'
@@ -34,15 +35,15 @@ export function AppSidebar() {
     <Sidebar
       collapsible="icon"
       variant="inset"
-      className="border-r border-white/[0.07] bg-[#111114] shadow-[16px_0_50px_rgba(0,0,0,0.18)]"
+      className="border-r border-white/[0.07] shadow-[16px_0_50px_rgba(0,0,0,0.18)]"
       style={
         {
-          '--sidebar': '#111114',
-          '--sidebar-foreground': '#f7f7fb',
+          '--sidebar': 'var(--sidebar-bg)',
+          '--sidebar-foreground': 'var(--sidebar-fg)',
           '--sidebar-primary': '#a78bfa',
           '--sidebar-primary-foreground': '#121217',
-          '--sidebar-accent': '#24242c',
-          '--sidebar-accent-foreground': '#ffffff',
+          '--sidebar-accent': 'var(--sidebar-accent-bg)',
+          '--sidebar-accent-foreground': 'var(--sidebar-fg)',
           '--sidebar-border': 'rgba(255, 255, 255, 0.08)',
           '--sidebar-ring': '#c4b5fd',
         } as React.CSSProperties
@@ -73,6 +74,9 @@ export function AppSidebar() {
         <WorkflowNav workflows={workflows} />
       </SidebarContent>
       <SidebarFooter className="m-3 mt-auto rounded-2xl p-2 group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:border-0 group-data-[collapsible=icon]:bg-transparent group-data-[collapsible=icon]:p-0">
+        <div className="mb-1 flex justify-start group-data-[collapsible=icon]:hidden">
+          <ModeToggle />
+        </div>
         <UserButton
           appearance={{
             elements: {

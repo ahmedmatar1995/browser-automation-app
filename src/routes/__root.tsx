@@ -42,7 +42,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <ThemeProvider theme="light">
+        <ThemeProvider theme={theme}>
           <ClerkProvider afterSignOutUrl="/sign-in">{children}</ClerkProvider>
           <Toaster />
           <TanStackDevtools
