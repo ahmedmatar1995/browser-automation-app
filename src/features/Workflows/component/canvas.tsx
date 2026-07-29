@@ -11,36 +11,31 @@ import {
   type Edge,
   type Connection,
   type Node,
+  type NodeTypes
 } from '@xyflow/react'
 
 import '@xyflow/react/dist/style.css'
 
 import { useTheme } from '@/components/theme-provider'
 
-const initialNodes: Node[] = [
-  {
-    id: '1',
-    type: 'input',
-    data: { label: 'Start' },
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '2',
-    data: { label: 'Process' },
-    position: { x: 0, y: 100 },
-  },
-  {
-    id: '3',
-    type: 'output',
-    data: { label: 'End' },
-    position: { x: 0, y: 200 },
-  },
-]
+import { StepNode } from '../nodes/step-node'
+import type { StepNodeType } from '../nodes/node-registry'
 
-const initialEdges: Edge[] = [
-  { id: 'e1-2', source: '1', target: '2' },
-  { id: 'e2-3', source: '2', target: '3' },
-]
+import "@xyflow/react/dist/style.css"
+
+const nodeTypes: NodeTypes = {
+  step: StepNode,
+}
+
+const initialNodes: StepNodeType[] = [{
+  id: "start",
+  type: "step",
+  position: { x: 0, y: 0 },
+  data: { type: "start", kind: "trigger", title: "Start", values: {} },
+},]
+
+const initialEdges: Edge[] = []
+
 
 export function Canvas() {
   const { theme } = useTheme()
@@ -54,6 +49,7 @@ export function Canvas() {
 
   return (
     <ReactFlow
+      nodeTypes={nodeTypes}
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
@@ -62,21 +58,21 @@ export function Canvas() {
       fitView
       colorMode={theme}
       connectionLineType={ConnectionLineType.SmoothStep}
-      connectionLineStyle={{ stroke:"var(--border)"}}
+      connectionLineStyle={{ stroke: "var(--border)" }}
       defaultEdgeOptions={{
         type: "smoothstep",
         style: {
-          stroke:"var(--border)"
+          stroke: "var(--border)"
         }
       }}
-       style={
-           {
-             "--xy-background-color": "var(--background)",
-             "--xy-edge-stroke-width": 2,
-             "--xy-connectionline-stroke-width": 2,
-           } as React.CSSProperties
-         }
-         maxZoom={1}
+      style={
+        {
+          "--xy-background-color": "var(--background)",
+          "--xy-edge-stroke-width": 2,
+          "--xy-connectionline-stroke-width": 2,
+        } as React.CSSProperties
+      }
+      maxZoom={1}
     >
       <Background />
       <Controls />
