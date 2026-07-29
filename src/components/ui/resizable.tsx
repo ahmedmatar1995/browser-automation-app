@@ -21,8 +21,50 @@ function ResizablePanelGroup({
   )
 }
 
-function ResizablePanel({ ...props }: ResizablePrimitive.PanelProps) {
-  return <ResizablePrimitive.Panel data-slot="resizable-panel" {...props} />
+type PanelSize = string | number
+
+function remToPixels(value: string): number {
+  const num = Number.parseFloat(value)
+  if (value.endsWith('rem')) return num * 16
+  if (value.endsWith('px')) return num
+  return num
+}
+
+interface ResizablePanelProps
+  extends Omit<
+    ResizablePrimitive.PanelProps,
+    | 'minSize'
+    | 'defaultSize'
+    | 'maxSize'
+    | 'minSizePixels'
+    | 'defaultSizePixels'
+    | 'maxSizePixels'
+  > {
+  minSize?: PanelSize
+  defaultSize?: PanelSize
+  maxSize?: PanelSize
+}
+
+function ResizablePanel({
+  minSize,
+  defaultSize,
+  maxSize,
+  ...props
+}: ResizablePanelProps) {
+  return (
+    <ResizablePrimitive.Panel
+      data-slot="resizable-panel"
+      minSizePixels={typeof minSize === 'string' ? remToPixels(minSize) : undefined}
+      defaultSizePixels={
+        typeof defaultSize === 'string' ? remToPixels(defaultSize) : undefined
+      }
+      maxSizePixels={typeof maxSize === 'string' ? remToPixels(maxSize) : undefined}
+      minSize={typeof minSize === 'number' ? minSize : undefined}
+      defaultSize={typeof defaultSize === 'number' ? defaultSize : undefined}
+      maxSize={typeof maxSize === 'number' ? maxSize : undefined}
+      {...props}
+    />
+  )
 }
 
 function ResizableHandle({

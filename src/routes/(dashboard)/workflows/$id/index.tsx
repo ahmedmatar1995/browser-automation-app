@@ -17,6 +17,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from '@/components/ui/empty.tsx'
+import { WorkflowShell } from '@/features/Workflows/component/WorkflowShell.tsx'
 
 export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
   component: RouteComponent,
@@ -75,5 +76,5 @@ export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
 
 function RouteComponent() {
   const { id } = useParams({ from: '/(dashboard)/workflows/$id/' })
-  return <div>Hello "/workflows/$id/"! , {id}</div>
+  return <WorkflowShell workflowId={id} />
 }
