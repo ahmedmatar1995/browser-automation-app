@@ -1,0 +1,15 @@
+src/components/app-sidebar.tsx(30,53): error TS2345: Argument of type 'Dispatch<SetStateAction<{ id: string; name: string; orgId: string; graph: unknown; createdAt: Date; updatedAt: Date; }[]>>' is not assignable to parameter of type '(value: unknown) => void | PromiseLike<void>'.
+  Types of parameters 'value' and 'value' are incompatible.
+    Type 'unknown' is not assignable to type 'SetStateAction<{ id: string; name: string; orgId: string; graph: unknown; createdAt: Date; updatedAt: Date; }[]>'.
+src/features/Workflows/actions.ts(18,12): error TS2345: Argument of type '({ data }: ServerFnCtx<Register, "GET", undefined, ZodObject<{ orgId: ZodString; }, $strip>>) => Promise<{ id: string; orgId: string; name: string; graph: unknown; createdAt: Date; updatedAt: Date; }[]>' is not assignable to parameter of type 'ServerFn<Register, "GET", undefined, ZodObject<{ orgId: ZodString; }, $strip>, Promise<{ id: string; orgId: string; name: string; graph: unknown; createdAt: Date; updatedAt: Date; }[]>, true>'.
+  Type 'Promise<{ id: string; orgId: string; name: string; graph: unknown; createdAt: Date; updatedAt: Date; }[]>' is not assignable to type 'Promise<ValidateSerializableMapped<{ id: string; orgId: string; name: string; graph: unknown; createdAt: Date; updatedAt: Date; }, RegisteredSerializableInput<Register>>[]>'.
+    Type '{ id: string; orgId: string; name: string; graph: unknown; createdAt: Date; updatedAt: Date; }[]' is not assignable to type 'ValidateSerializableMapped<{ id: string; orgId: string; name: string; graph: unknown; createdAt: Date; updatedAt: Date; }, RegisteredSerializableInput<Register>>[]'.
+      Type '{ id: string; orgId: string; name: string; graph: unknown; createdAt: Date; updatedAt: Date; }' is not assignable to type 'ValidateSerializableMapped<{ id: string; orgId: string; name: string; graph: unknown; createdAt: Date; updatedAt: Date; }, RegisteredSerializableInput<Register>>'.
+        Types of property 'graph' are incompatible.
+          Type 'unknown' is not assignable to type 'SerializationError<"Type may not be serializable">'.
+src/features/Workflows/component/WorkflowNav.tsx(3,16): error TS2300: Duplicate identifier 'Workflow'.
+src/features/Workflows/component/WorkflowNav.tsx(20,15): error TS2300: Duplicate identifier 'Workflow'.
+src/features/Workflows/component/WorkflowNav.tsx(42,57): error TS2749: 'Workflow' refers to a value, but is being used as a type here. Did you mean 'typeof Workflow'?
+src/features/Workflows/component/WorkflowNav.tsx(102,51): error TS2749: 'Workflow' refers to a value, but is being used as a type here. Did you mean 'typeof Workflow'?
+src/routes/(auth)/choose-organization.tsx(7,28): error TS6133: 'orgId' is declared but its value is never read.
+src/routes/(dashboard)/index.tsx(7,1): error TS6133: 'ModeToggle' is declared but its value is never read.

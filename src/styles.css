@@ -4,7 +4,7 @@
 
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark, [data-theme="dark"]) *);
 
 :root {
   --sidebar-bg: #eef2f5;
