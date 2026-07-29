@@ -17,5 +17,16 @@
       "stop-slop",
       "find-skills"
     ]
+  },
+  "mcpServers": {
+    "trigger": {
+      "command": "npx",
+      "args": [
+        "trigger.dev@latest",
+        "mcp",
+        "--project-ref",
+        "proj_euacqrufcdytqmkgkomf"
+      ]
+    }
   }
 }

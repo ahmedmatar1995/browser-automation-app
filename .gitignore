@@ -16,3 +16,5 @@ todos.json
 /.clerk/
 .vercel
 .env*
+
+.trigger
