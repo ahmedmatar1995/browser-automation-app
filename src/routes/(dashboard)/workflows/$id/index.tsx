@@ -5,8 +5,8 @@ import {
   RefreshCw,
 } from 'lucide-react'
 
-import { createFileRoute, useParams } from '@tanstack/react-router'
 import type { ErrorComponentProps } from '@tanstack/react-router'
+import { createFileRoute, useParams } from '@tanstack/react-router'
 
 import { Button } from '@/components/ui/button.tsx'
 import {
@@ -18,6 +18,7 @@ import {
   EmptyTitle,
 } from '@/components/ui/empty.tsx'
 import { WorkflowShell } from '@/features/Workflows/component/WorkflowShell.tsx'
+import { Room } from '../../../../features/Workflows/component/room'
 
 export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
   component: RouteComponent,
@@ -76,5 +77,9 @@ export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
 
 function RouteComponent() {
   const { id } = useParams({ from: '/(dashboard)/workflows/$id/' })
-  return <WorkflowShell workflowId={id} />
+  return (
+    <Room roomId={id}>
+      <WorkflowShell workflowId={id} />
+    </Room>
+  )
 }

@@ -1,51 +1,45 @@
-import { useCallback } from 'react'
+import type { Edge, NodeTypes } from '@xyflow/react'
 import {
-  ReactFlow,
   Background,
+  ConnectionLineType,
   Controls,
   MiniMap,
-  addEdge,
-  useNodesState,
-  useEdgesState,
-  ConnectionLineType,
-  type Edge,
-  type Connection,
-  type Node,
-  type NodeTypes
+  ReactFlow,
 } from '@xyflow/react'
 
+import '@liveblocks/react-flow/styles.css'
+import '@liveblocks/react-ui/styles.css'
 import '@xyflow/react/dist/style.css'
 
 import { useTheme } from '@/components/theme-provider'
 
-import { StepNode } from '../nodes/step-node'
+import { Cursors, useLiveblocksFlow } from '@liveblocks/react-flow'
 import type { StepNodeType } from '../nodes/node-registry'
-
-import "@xyflow/react/dist/style.css"
+import { StepNode } from '../nodes/step-node'
 
 const nodeTypes: NodeTypes = {
   step: StepNode,
 }
 
-const initialNodes: StepNodeType[] = [{
-  id: "start",
-  type: "step",
-  position: { x: 0, y: 0 },
-  data: { type: "start", kind: "trigger", title: "Start", values: {} },
-},]
+const initialNodes: StepNodeType[] = [
+  {
+    id: 'start',
+    type: 'step',
+    position: { x: 0, y: 0 },
+    data: { type: 'start', kind: 'trigger', title: 'Start', values: {} },
+  },
+]
 
 const initialEdges: Edge[] = []
 
-
 export function Canvas() {
   const { theme } = useTheme()
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
-
-  const onConnect = useCallback(
-    (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
-    [setEdges],
-  )
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect, onDelete } =
+    useLiveblocksFlow({
+      suspense: true,
+      nodes: { initial: initialNodes },
+      edges: { initial: initialEdges },
+    })
 
   return (
     <ReactFlow
@@ -55,21 +49,22 @@ export function Canvas() {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
+      onDelete={onDelete}
       fitView
       colorMode={theme}
       connectionLineType={ConnectionLineType.SmoothStep}
-      connectionLineStyle={{ stroke: "var(--border)" }}
+      connectionLineStyle={{ stroke: 'var(--border)' }}
       defaultEdgeOptions={{
-        type: "smoothstep",
+        type: 'smoothstep',
         style: {
-          stroke: "var(--border)"
-        }
+          stroke: 'var(--border)',
+        },
       }}
       style={
         {
-          "--xy-background-color": "var(--background)",
-          "--xy-edge-stroke-width": 2,
-          "--xy-connectionline-stroke-width": 2,
+          '--xy-background-color': 'var(--background)',
+          '--xy-edge-stroke-width': 2,
+          '--xy-connectionline-stroke-width': 2,
         } as React.CSSProperties
       }
       maxZoom={1}
@@ -77,6 +72,7 @@ export function Canvas() {
       <Background />
       <Controls />
       <MiniMap />
+      <Cursors />
     </ReactFlow>
   )
 }
