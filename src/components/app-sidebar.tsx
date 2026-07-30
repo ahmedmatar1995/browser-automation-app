@@ -1,6 +1,7 @@
 'use client';
 
 import { ModeToggle } from '@/components/theme-toggle';
+import { shadcn } from '@clerk/themes';
 import {
   OrganizationSwitcher,
   useAuth,
@@ -43,7 +44,9 @@ export function AppSidebar() {
             hidePersonal
             afterCreateOrganizationUrl="/"
             afterSelectOrganizationUrl="/"
+            afterLeaveOrganizationUrl="/"
             appearance={{
+              theme: shadcn,
               elements: {
                 rootBox: 'w-full!',
                 organizationSwitcherTrigger:
@@ -52,7 +55,6 @@ export function AppSidebar() {
                   'text-[15px]! font-bold! tracking-[-0.02em]! text-white! group-data-[collapsible=icon]:hidden! capitalize!',
                 organizationSwitcherTriggerIcon:
                   'text-white! group-data-[collapsible=icon]:hidden!',
-                organizationSwitcherPopoverCard:"bg-background! text-foreground!",
               },
             }}
           />

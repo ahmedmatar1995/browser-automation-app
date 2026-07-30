@@ -22,6 +22,7 @@ export const Route = createFileRoute('/liveblocks/auth')({
         const { status, body } = await liveblocks.identifyUser(
           {
             userId: userId,
+            organizationId: orgId,
             groupIds,
           },
           { userInfo: { name: userId } },

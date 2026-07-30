@@ -24,10 +24,20 @@ import { createServerFn } from '@tanstack/react-start'
 import { getWorkflow } from '../../../../features/Workflows/data'
 import { liveblocks } from '@/lib/liveblocks'
 
-const checkOrgAuth = createServerFn().handler(async () => {
-  const { orgId } = await auth();
-  if (!orgId) throw redirect({ to: '/' });
-});
+const setupRoom = createServerFn({ method: 'GET' })
+  .validator((data: { roomId: string }) => data)
+  .handler(async ({ data }) => {
+    const { orgId } = await auth();
+    if (!orgId) throw redirect({ to: '/' });
+
+    await liveblocks.getOrCreateRoom(data.roomId, {
+      organizationId: orgId,
+      defaultAccesses: [],
+      groupsAccesses: {
+        [orgId]: ['room:write'],
+      },
+    });
+  });
 
 const fetchWorkflow = createServerFn({ method: 'GET' })
   .validator((data: { workflowId: string }) => data)
@@ -35,26 +45,16 @@ const fetchWorkflow = createServerFn({ method: 'GET' })
     const { orgId } = await auth();
     if (!orgId) throw redirect({ to: '/' });
 
-    const workflow = await getWorkflow(orgId, data.workflowId);
-
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (workflow) {
-      await liveblocks.getOrCreateRoom(data.workflowId, {
-        defaultAccesses: [],
-        groupsAccesses: {
-          [orgId]: ['room:write'],
-        },
-      });
-    }
-
-    return workflow;
+    return await getWorkflow(orgId, data.workflowId);
   });
 
 export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
-  beforeLoad: async () => {
-    await checkOrgAuth();
+  beforeLoad: async ({ params }) => {
+    await setupRoom({ data: { roomId: params.id } });
   },
-  loader: ({ params }) => fetchWorkflow({ data: { workflowId: params.id } }),
+  loader: async ({ params }) => {
+    return await fetchWorkflow({ data: { workflowId: params.id } });
+  },
   component: RouteComponent,
   pendingComponent: () => {
     return (
@@ -112,7 +112,7 @@ export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
 function RouteComponent() {
   const { id } = useParams({ from: '/(dashboard)/workflows/$id/' })
   return (
-    <Room roomId={id}>
+    <Room key={id} roomId={id}>
       <WorkflowShell workflowId={id} />
     </Room>
   )
