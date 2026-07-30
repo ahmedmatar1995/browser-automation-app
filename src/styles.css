@@ -67,7 +67,7 @@
 }
 
 .dark,
-[data-theme="dark"] {
+[data-theme='dark'] {
   --sidebar-bg: #111114;
   --sidebar-fg: #f7f7fb;
   --sidebar-accent-bg: #24242c;

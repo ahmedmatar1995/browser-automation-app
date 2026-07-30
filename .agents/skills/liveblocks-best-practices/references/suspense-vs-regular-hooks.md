@@ -1,5 +1,5 @@
 ---
-title: "Suspense vs Regular hooks"
+title: 'Suspense vs Regular hooks'
 ---
 
 # Suspense vs Regular hooks
@@ -12,10 +12,10 @@ don’t.
 
 ```tsx
 // Import the Suspense hook
-import { useThreads } from "@liveblocks/react/suspense";
+import { useThreads } from '@liveblocks/react/suspense';
 
 // Import the regular hook
-import { useThreads } from "@liveblocks/react";
+import { useThreads } from '@liveblocks/react';
 ```
 
 ### Suspense hooks (often easier)
@@ -25,7 +25,7 @@ loading spinner for any components below it. When using this, all components
 below will only render once their hook contents have been loaded.
 
 ```tsx
-import { ClientSideSuspense, useStorage } from "@liveblocks/react/suspense";
+import { ClientSideSuspense, useStorage } from '@liveblocks/react/suspense';
 
 function App() {
   <ClientSideSuspense fallback={<div>Loading…</div>}>
@@ -47,8 +47,8 @@ can also use [`ErrorBoundary`](https://github.com/bvaughn/react-error-boundary)
 to render an error if the hook runs into a problem.
 
 ```tsx
-import { ClientSideSuspense, useThreads } from "@liveblocks/react/suspense";
-import { ErrorBoundary } from "react-error-boundary";
+import { ClientSideSuspense, useThreads } from '@liveblocks/react/suspense';
+import { ErrorBoundary } from 'react-error-boundary';
 
 function App() {
   return (
@@ -79,7 +79,7 @@ Regular hooks often return `null` whilst a component is loading, and you must
 check for this to render a loading spinner.
 
 ```tsx
-import { useStorage } from "@liveblocks/react";
+import { useStorage } from '@liveblocks/react';
 
 function Component() {
   // `animals` is `null` when loading
@@ -98,7 +98,7 @@ Advanced hooks using the `{ ..., error, isLoading }` syntax, such as
 require you to make sure there isn’t a problem before using the data.
 
 ```tsx
-import { useThreads } from "@liveblocks/react";
+import { useThreads } from '@liveblocks/react';
 
 function Component() {
   // Check for `error` and `isLoading` before `threads` is defined
@@ -124,7 +124,7 @@ error when they’re run on the server, and this component avoids this issue by
 always rendering the `fallback` on the server.
 
 ```tsx
-import { ClientSideSuspense } from "@liveblocks/react/suspense";
+import { ClientSideSuspense } from '@liveblocks/react/suspense';
 
 function Page() {
   return (
@@ -149,8 +149,8 @@ these components in different parts of your application, and each will work as a
 loading fallbacks and error fallbacks for any components further down your tree.
 
 ```tsx
-import { ClientSideSuspense } from "@liveblocks/react/suspense";
-import { ErrorBoundary } from "react-error-boundary";
+import { ClientSideSuspense } from '@liveblocks/react/suspense';
+import { ErrorBoundary } from 'react-error-boundary';
 
 function Page() {
   return (

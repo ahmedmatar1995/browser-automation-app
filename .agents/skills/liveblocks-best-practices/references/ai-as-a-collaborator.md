@@ -1,5 +1,5 @@
 ---
-title: "AI as a collaborator"
+title: 'AI as a collaborator'
 ---
 
 # AI as a collaborator

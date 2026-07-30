@@ -1,5 +1,5 @@
 ---
-title: "Auth endpoint callback"
+title: 'Auth endpoint callback'
 ---
 
 # Auth endpoint callback
@@ -8,7 +8,7 @@ Liveblocks recommends using an auth endpoint to authenticate users, usually like
 this:
 
 ```tsx
-import { LiveblocksProvider } from "@liveblocks/react/suspense";
+import { LiveblocksProvider } from '@liveblocks/react/suspense';
 
 function App() {
   return (
@@ -22,17 +22,17 @@ function App() {
 However you can also define a callback function, and write your own fetch logic:
 
 ```tsx
-import { LiveblocksProvider } from "@liveblocks/react/suspense";
+import { LiveblocksProvider } from '@liveblocks/react/suspense';
 
 function App() {
   return (
     <LiveblocksProvider
       authEndpoint={async (room) => {
-        const response = await fetch("/api/liveblocks-auth", {
-          method: "POST",
+        const response = await fetch('/api/liveblocks-auth', {
+          method: 'POST',
           headers: {
-            Authentication: "<your own headers here>",
-            "Content-Type": "application/json",
+            Authentication: '<your own headers here>',
+            'Content-Type': 'application/json',
           },
           // Don't forget to pass `room` down. Note that it
           // can be undefined when using Notifications.

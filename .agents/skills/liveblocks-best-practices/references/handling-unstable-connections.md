@@ -1,5 +1,5 @@
 ---
-title: "Handling unstable connections"
+title: 'Handling unstable connections'
 ---
 
 # Handling unstable connections
@@ -13,21 +13,21 @@ inside of
 [`LiveblocksProvider`](https://liveblocks.io/docs/api-reference/liveblocks-react#LiveblocksProvider).
 
 ```tsx
-import { toast } from "my-preferred-toast-library";
+import { toast } from 'my-preferred-toast-library';
 
 function App() {
   useLostConnectionListener((event) => {
     switch (event) {
-      case "lost":
-        toast.warn("Still trying to reconnect...");
+      case 'lost':
+        toast.warn('Still trying to reconnect...');
         break;
 
-      case "restored":
-        toast.success("Successfully reconnected again!");
+      case 'restored':
+        toast.success('Successfully reconnected again!');
         break;
 
-      case "failed":
-        toast.error("Could not restore the connection");
+      case 'failed':
+        toast.error('Could not restore the connection');
         break;
     }
   });
@@ -39,7 +39,7 @@ Edit the amount of time until the callback is called with the
 option on `LiveblocksProvider`. The default is `5000`, 5 seconds.
 
 ```tsx
-import { LiveblocksProvider } from "@liveblocks/react/suspense";
+import { LiveblocksProvider } from '@liveblocks/react/suspense';
 
 function App() {
   return (

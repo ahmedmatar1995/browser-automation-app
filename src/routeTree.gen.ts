@@ -15,6 +15,7 @@ import { Route as authChooseOrganizationRouteImport } from './routes/(auth)/choo
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as dashboardIndexRouteImport } from './routes/(dashboard)/index'
+import { Route as LiveblocksAuthRouteImport } from './routes/liveblocks/auth'
 import { Route as dashboardWorkflowsIdIndexRouteImport } from './routes/(dashboard)/workflows/$id/index'
 
 const authRouteRoute = authRouteRouteImport.update({
@@ -45,6 +46,11 @@ const dashboardIndexRoute = dashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => dashboardRouteRoute,
 } as any)
+const LiveblocksAuthRoute = LiveblocksAuthRouteImport.update({
+  id: '/liveblocks/auth',
+  path: '/liveblocks/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const dashboardWorkflowsIdIndexRoute =
   dashboardWorkflowsIdIndexRouteImport.update({
     id: '/workflows/$id/',
@@ -56,6 +62,7 @@ export interface FileRoutesByFullPath {
   '/choose-organization': typeof authChooseOrganizationRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
+  '/liveblocks/auth': typeof LiveblocksAuthRoute
   '/': typeof dashboardIndexRoute
   '/workflows/$id/': typeof dashboardWorkflowsIdIndexRoute
 }
@@ -63,6 +70,7 @@ export interface FileRoutesByTo {
   '/choose-organization': typeof authChooseOrganizationRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
+  '/liveblocks/auth': typeof LiveblocksAuthRoute
   '/': typeof dashboardIndexRoute
   '/workflows/$id': typeof dashboardWorkflowsIdIndexRoute
 }
@@ -73,15 +81,27 @@ export interface FileRoutesById {
   '/(auth)/choose-organization': typeof authChooseOrganizationRoute
   '/(auth)/sign-in': typeof authSignInRoute
   '/(auth)/sign-up': typeof authSignUpRoute
+  '/liveblocks/auth': typeof LiveblocksAuthRoute
   '/(dashboard)/': typeof dashboardIndexRoute
   '/(dashboard)/workflows/$id/': typeof dashboardWorkflowsIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/choose-organization' | '/sign-in' | '/sign-up' | '/' | '/workflows/$id/'
+    | '/choose-organization'
+    | '/sign-in'
+    | '/sign-up'
+    | '/liveblocks/auth'
+    | '/'
+    | '/workflows/$id/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/choose-organization' | '/sign-in' | '/sign-up' | '/' | '/workflows/$id'
+  to:
+    | '/choose-organization'
+    | '/sign-in'
+    | '/sign-up'
+    | '/liveblocks/auth'
+    | '/'
+    | '/workflows/$id'
   id:
     | '__root__'
     | '/(auth)'
@@ -89,6 +109,7 @@ export interface FileRouteTypes {
     | '/(auth)/choose-organization'
     | '/(auth)/sign-in'
     | '/(auth)/sign-up'
+    | '/liveblocks/auth'
     | '/(dashboard)/'
     | '/(dashboard)/workflows/$id/'
   fileRoutesById: FileRoutesById
@@ -96,6 +117,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   authRouteRoute: typeof authRouteRouteWithChildren
   dashboardRouteRoute: typeof dashboardRouteRouteWithChildren
+  LiveblocksAuthRoute: typeof LiveblocksAuthRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -142,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof dashboardIndexRouteImport
       parentRoute: typeof dashboardRouteRoute
     }
+    '/liveblocks/auth': {
+      id: '/liveblocks/auth'
+      path: '/liveblocks/auth'
+      fullPath: '/liveblocks/auth'
+      preLoaderRoute: typeof LiveblocksAuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(dashboard)/workflows/$id/': {
       id: '/(dashboard)/workflows/$id/'
       path: '/workflows/$id'
@@ -185,6 +214,7 @@ const dashboardRouteRouteWithChildren = dashboardRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   authRouteRoute: authRouteRouteWithChildren,
   dashboardRouteRoute: dashboardRouteRouteWithChildren,
+  LiveblocksAuthRoute: LiveblocksAuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

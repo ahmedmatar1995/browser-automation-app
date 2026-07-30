@@ -1,11 +1,11 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@tanstack/react-router';
 
-import { AppSidebar } from '@/components/app-sidebar.tsx'
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar.tsx'
+import { AppSidebar } from '@/components/app-sidebar.tsx';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar.tsx';
 
 export const Route = createFileRoute('/(dashboard)')({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
   return (
@@ -15,5 +15,5 @@ function RouteComponent() {
         <Outlet />
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

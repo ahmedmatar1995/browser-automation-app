@@ -1,5 +1,5 @@
 ---
-title: "Edit component text strings"
+title: 'Edit component text strings'
 ---
 
 # Edit component text strings
@@ -10,12 +10,12 @@ properties, such as locale and reading direction. For example, you can change
 components using `LiveblocksUiConfig`:
 
 ```tsx
-import { LiveblocksUiConfig } from "@liveblocks/react-ui";
+import { LiveblocksUiConfig } from '@liveblocks/react-ui';
 
 export function App() {
   return (
     <LiveblocksUiConfig
-      overrides={{ locale: "fr", USER_UNKNOWN: "Anonyme" /* ... */ }}
+      overrides={{ locale: 'fr', USER_UNKNOWN: 'Anonyme' /* ... */ }}
     >
       {/* ... */}
     </LiveblocksUiConfig>
@@ -31,8 +31,8 @@ threads:
 ```tsx
 <Composer
   overrides={{
-    COMPOSER_PLACEHOLDER: "Reply to thread…",
-    COMPOSER_SEND: "Reply",
+    COMPOSER_PLACEHOLDER: 'Reply to thread…',
+    COMPOSER_SEND: 'Reply',
   }}
 />
 ```

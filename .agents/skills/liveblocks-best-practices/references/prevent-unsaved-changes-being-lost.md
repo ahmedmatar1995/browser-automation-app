@@ -1,5 +1,5 @@
 ---
-title: "Prevent unsaved changes being lost"
+title: 'Prevent unsaved changes being lost'
 ---
 
 # Prevent unsaved changes being lost

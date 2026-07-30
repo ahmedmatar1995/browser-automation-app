@@ -1,5 +1,5 @@
 ---
-title: "Yjs best practices"
+title: 'Yjs best practices'
 ---
 
 # Yjs best practices
@@ -61,13 +61,13 @@ subdocuments are not necessary. Instead, use a
 ```tsx
 // Create Yjs document with an `editors` map
 const yDoc = new Y.Doc();
-const yMap = yDoc.getMap("editors");
+const yMap = yDoc.getMap('editors');
 
 // Create shared types and add to map
 const editorOne = new Y.XMLFragment();
 const editorTwo = new Y.XMLFragment();
-yMap.set("editor-1", editorOne);
-yMap.set("editor-2", editorTwo);
+yMap.set('editor-1', editorOne);
+yMap.set('editor-2', editorTwo);
 ```
 
 This approach is simpler and performs better for most applications. True use
@@ -83,8 +83,8 @@ instead of creating a new provider on each render. This ensures the provider is
 reused across renders, making your application more resilient:
 
 ```tsx
-import { useRoom } from "@liveblocks/react";
-import { getYjsProviderForRoom } from "@liveblocks/yjs";
+import { useRoom } from '@liveblocks/react';
+import { getYjsProviderForRoom } from '@liveblocks/yjs';
 
 function App() {
   const room = useRoom();
@@ -123,23 +123,23 @@ npm install y-utility
 ```
 
 ```ts
-import * as Y from "yjs";
-import { YKeyValue } from "y-utility/y-keyvalue";
+import * as Y from 'yjs';
+import { YKeyValue } from 'y-utility/y-keyvalue';
 
 const ydoc = new Y.Doc();
 const yarr = ydoc.getArray();
 const ykv = new YKeyValue(yarr);
 
 // Fires events similarly to Y.Map when content changes
-ykv.on("change", (changes) => {
+ykv.on('change', (changes) => {
   console.log(changes);
 });
 
-ykv.set("key1", "val1");
-ykv.set("key1", "updated");
-ykv.delete("key1");
-ykv.set("key1", "new val");
-ykv.get("key1"); // => 'new val'
+ykv.set('key1', 'val1');
+ykv.set('key1', 'updated');
+ykv.delete('key1');
+ykv.set('key1', 'new val');
+ykv.get('key1'); // => 'new val'
 ```
 
 `YKeyValue` creates documents whose size only depends on the size of the map,
@@ -153,8 +153,8 @@ If you're using `Y.Map` in combination with Yjs, you can enable the experimental
 V2 encoding for better performance and smaller document sizes:
 
 ```ts
-import { useRoom } from "@liveblocks/react";
-import { getYjsProviderForRoom } from "@liveblocks/yjs";
+import { useRoom } from '@liveblocks/react';
+import { getYjsProviderForRoom } from '@liveblocks/yjs';
 
 function App() {
   const room = useRoom();

@@ -1,5 +1,5 @@
 ---
-title: "URL params in room ID"
+title: 'URL params in room ID'
 ---
 
 # URL params in room ID
@@ -17,7 +17,7 @@ https://www.notion.so/liveblocks/32682084c81280e6bc52e987f7c58019
 In Next.js, it may work like this:
 
 ```tsx file="app/document/[slug]/page.tsx"
-import { Room } from "./room";
+import { Room } from './room';
 
 export default async function Page({
   params,
@@ -31,10 +31,10 @@ export default async function Page({
 ```
 
 ```tsx file="app/document/[slug]/room.tsx"
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { RoomProvider } from "@liveblocks/react";
+import { ReactNode } from 'react';
+import { RoomProvider } from '@liveblocks/react';
 
 export function Room({
   roomId,
@@ -54,8 +54,8 @@ identify and filter certains rooms. For example, those created by each customer.
 You can combine this with URL params, for example like this:
 
 ```tsx file="app/document/[slug]/page.tsx"
-import { Room } from "./room";
-import { useSession } from "your-auth-library";
+import { Room } from './room';
+import { useSession } from 'your-auth-library';
 
 export default async function Page({
   params,
@@ -92,8 +92,8 @@ room ID. In Notion's case, this is the `-` character. Here it is, combined with
 the naming pattern:
 
 ```tsx file="app/document/[slug]/page.tsx"
-import { Room } from "./room";
-import { useSession } from "your-auth-library";
+import { Room } from './room';
+import { useSession } from 'your-auth-library';
 
 export default async function Page({
   params,
@@ -109,7 +109,7 @@ export default async function Page({
 
   // Ignore the title part of the URL
   // e.g. "my-room-title-here-"
-  const slugSplit = slug.split("-");
+  const slugSplit = slug.split('-');
   const slugId = slugSplit[slugSplit.length - 1];
 
   const roomId = `${user.organization}:${slugId}`;

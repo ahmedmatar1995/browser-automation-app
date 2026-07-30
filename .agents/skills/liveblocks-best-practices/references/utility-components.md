@@ -1,5 +1,5 @@
 ---
-title: "Utility components"
+title: 'Utility components'
 ---
 
 # Utility components
@@ -15,7 +15,7 @@ ago” or "in 1 day") and a short absolute formatting for more distant ones (e.g
 “25 Aug”).
 
 ```tsx
-import { Timestamp } from "@liveblocks/react-ui/primitives";
+import { Timestamp } from '@liveblocks/react-ui/primitives';
 
 <Timestamp date={new Date()} />;
 ```
@@ -27,7 +27,7 @@ displays a formatted duration, and automatically re-renders to if the duration
 is in progress. Defaults to a short format (e.g. “5s” or “1m 40s”).
 
 ```tsx
-import { Duration } from "@liveblocks/react-ui/primitives";
+import { Duration } from '@liveblocks/react-ui/primitives';
 
 <Duration duration={3 * 60 * 1000} />;
 ```
@@ -38,7 +38,7 @@ import { Duration } from "@liveblocks/react-ui/primitives";
 displays a formatted file size.
 
 ```tsx
-import { FileSize } from "@liveblocks/react-ui/primitives";
+import { FileSize } from '@liveblocks/react-ui/primitives';
 
 <FileSize size={100000} />;
 ```
@@ -51,7 +51,7 @@ for Comments, and built by the Liveblocks team, you can easily add an emoji
 picker.
 
 ```tsx
-import { EmojiPicker } from "frimousse";
+import { EmojiPicker } from 'frimousse';
 
 export function MyEmojiPicker() {
   return (
@@ -72,9 +72,9 @@ export function MyEmojiPicker() {
 With Tailwind styles.
 
 ```tsx
-"use client";
+'use client';
 
-import { EmojiPicker } from "frimousse";
+import { EmojiPicker } from 'frimousse';
 
 export function MyEmojiPicker() {
   return (

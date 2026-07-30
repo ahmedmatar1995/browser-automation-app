@@ -1,5 +1,5 @@
 ---
-title: "Exhaustive deps with useMutation"
+title: 'Exhaustive deps with useMutation'
 ---
 
 # Exhaustive deps with useMutation
@@ -15,10 +15,10 @@ Without configuration, `useMutation` calls with missing or stale dependencies
 won't trigger lint warnings, which can lead to subtle stale-closure bugs:
 
 ```tsx
-const name = "Alice";
+const name = 'Alice';
 
 const update = useMutation(({ storage }) => {
-  storage.get("user").set("name", name);
+  storage.get('user').set('name', name);
 }, []);
 // ~~ ❌ `name` not listed as a dependency
 ```
@@ -31,15 +31,15 @@ Add `useMutation` to the `additionalHooks` option of
 ### Flat config (`eslint.config.js` / `eslint.config.mjs`)
 
 ```js
-import reactHooks from "eslint-plugin-react-hooks";
+import reactHooks from 'eslint-plugin-react-hooks';
 
 export default [
   reactHooks.configs.flat.recommended,
   {
     rules: {
-      "react-hooks/exhaustive-deps": [
-        "error",
-        { additionalHooks: "(useMutation)" },
+      'react-hooks/exhaustive-deps': [
+        'error',
+        { additionalHooks: '(useMutation)' },
       ],
     },
   },

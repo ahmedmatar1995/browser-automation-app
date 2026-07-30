@@ -1,25 +1,25 @@
-import type { Edge, NodeTypes } from '@xyflow/react'
+import type { Edge, NodeTypes } from '@xyflow/react';
 import {
   Background,
   ConnectionLineType,
   Controls,
   MiniMap,
   ReactFlow,
-} from '@xyflow/react'
+} from '@xyflow/react';
 
-import '@liveblocks/react-flow/styles.css'
-import '@liveblocks/react-ui/styles.css'
-import '@xyflow/react/dist/style.css'
+import '@liveblocks/react-flow/styles.css';
+import '@liveblocks/react-ui/styles.css';
+import '@xyflow/react/dist/style.css';
 
-import { useTheme } from '@/components/theme-provider'
+import { useTheme } from '@/components/theme-provider';
 
-import { Cursors, useLiveblocksFlow } from '@liveblocks/react-flow'
-import type { StepNodeType } from '../nodes/node-registry'
-import { StepNode } from '../nodes/step-node'
+import { Cursors, useLiveblocksFlow } from '@liveblocks/react-flow';
+import type { StepNodeType } from '../nodes/node-registry';
+import { StepNode } from '../nodes/step-node';
 
 const nodeTypes: NodeTypes = {
   step: StepNode,
-}
+};
 
 const initialNodes: StepNodeType[] = [
   {
@@ -28,18 +28,18 @@ const initialNodes: StepNodeType[] = [
     position: { x: 0, y: 0 },
     data: { type: 'start', kind: 'trigger', title: 'Start', values: {} },
   },
-]
+];
 
-const initialEdges: Edge[] = []
+const initialEdges: Edge[] = [];
 
 export function Canvas() {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
   const { nodes, edges, onNodesChange, onEdgesChange, onConnect, onDelete } =
     useLiveblocksFlow({
       suspense: true,
       nodes: { initial: initialNodes },
       edges: { initial: initialEdges },
-    })
+    });
 
   return (
     <ReactFlow
@@ -74,5 +74,5 @@ export function Canvas() {
       <MiniMap />
       <Cursors />
     </ReactFlow>
-  )
+  );
 }

@@ -1,5 +1,5 @@
 ---
-title: "Override CSS variables"
+title: 'Override CSS variables'
 ---
 
 # Override CSS variables
@@ -29,7 +29,7 @@ Some elements have data attributes to provide contextual information. Also
 remember that regular CSS properties work too.
 
 ```css
-.lb-button[data-variant="primary"] {
+.lb-button[data-variant='primary'] {
   --lb-accent: blue;
 }
 

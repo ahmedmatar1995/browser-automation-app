@@ -1,5 +1,5 @@
 ---
-title: "Create custom comment composers"
+title: 'Create custom comment composers'
 ---
 
 # Create custom comment composer
@@ -8,8 +8,8 @@ You can create a custom comment composer with
 [`useComposer`](https://liveblocks.io/docs/api-reference/liveblocks-react-ui#useComposer).
 
 ```tsx
-import { Composer, useComposer } from "@liveblocks/react-ui/primitives";
-import { useCreateThread } from "@liveblocks/react/suspense";
+import { Composer, useComposer } from '@liveblocks/react-ui/primitives';
+import { useCreateThread } from '@liveblocks/react/suspense';
 
 function MyComposer() {
   const createThread = useCreateThread();

@@ -1,5 +1,5 @@
 ---
-title: "AI chats with tools, knowledge, components"
+title: 'AI chats with tools, knowledge, components'
 ---
 
 # AI chats with tools, knowledge, components
@@ -15,7 +15,7 @@ fully themeable components.
 The basic component is AI chat:
 
 ```tsx
-import { AiChat } from "@liveblocks/react-ui";
+import { AiChat } from '@liveblocks/react-ui';
 
 <AiChat chatId="my-chat-id" />;
 ```

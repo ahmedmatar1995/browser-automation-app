@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import { Link, useMatch } from '@tanstack/react-router'
-import { Plus, Workflow as WorkflowIcon } from 'lucide-react'
+import { Link, useMatch } from '@tanstack/react-router';
+import { Plus, Workflow as WorkflowIcon } from 'lucide-react';
 
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover.tsx'
+} from '@/components/ui/popover.tsx';
 import {
   SidebarGroup,
   SidebarGroupAction,
@@ -16,10 +16,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@/components/ui/sidebar.tsx'
-import type { Workflow } from '@/lib/db/schema'
-import { createWorkflowAction } from '@/features/Workflows/actions'
-import { generateSlug } from '@/features/Workflows/lib/generateSlug'
+} from '@/components/ui/sidebar.tsx';
+import type { Workflow } from '@/lib/db/schema';
+import { createWorkflowAction } from '@/features/Workflows/actions';
+import { generateSlug } from '@/features/Workflows/lib/generateSlug';
 
 const colors = [
   '#b8a5ff',
@@ -32,29 +32,29 @@ const colors = [
   '#df9ded',
   '#74c8e8',
   '#f5a97f',
-]
+];
 
 function getMark(name: string) {
   return name
     .split('-')
     .map((w) => w.charAt(0).toUpperCase())
-    .join('')
+    .join('');
 }
 
 function getColor(name: string) {
-  let hash = 0
+  let hash = 0;
   for (let i = 0; i < name.length; i++) {
-    hash = name.charCodeAt(i) + ((hash << 5) - hash)
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
-  return colors[Math.abs(hash) % colors.length]
+  return colors[Math.abs(hash) % colors.length];
 }
 
 export function WorkflowNav({ workflows }: { workflows: Workflow[] }) {
-  const { state } = useSidebar()
+  const { state } = useSidebar();
 
   async function handleCreate() {
-    const name = generateSlug()
-    await createWorkflowAction({ data: { name } })
+    const name = generateSlug();
+    await createWorkflowAction({ data: { name } });
   }
 
   if (state === 'collapsed') {
@@ -77,7 +77,7 @@ export function WorkflowNav({ workflows }: { workflows: Workflow[] }) {
           <WorkflowList workflows={workflows} />
         </PopoverContent>
       </Popover>
-    )
+    );
   }
 
   return (
@@ -96,15 +96,15 @@ export function WorkflowNav({ workflows }: { workflows: Workflow[] }) {
         <WorkflowList workflows={workflows} />
       </SidebarGroupContent>
     </SidebarGroup>
-  )
+  );
 }
 
 function WorkflowList({ workflows }: { workflows: Workflow[] }) {
   const match = useMatch({
     from: '/(dashboard)/workflows/$id/',
     shouldThrow: false,
-  })
-  const activeId = match?.params.id
+  });
+  const activeId = match?.params.id;
 
   return (
     <SidebarMenu className="gap-1.5 mt-12">
@@ -134,5 +134,5 @@ function WorkflowList({ workflows }: { workflows: Workflow[] }) {
         </SidebarMenuItem>
       ))}
     </SidebarMenu>
-  )
+  );
 }

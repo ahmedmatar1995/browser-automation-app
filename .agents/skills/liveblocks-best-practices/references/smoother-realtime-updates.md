@@ -1,5 +1,5 @@
 ---
-title: "Smoother realtime updates"
+title: 'Smoother realtime updates'
 ---
 
 # Smoother realtime updates
@@ -11,7 +11,7 @@ value. The default is `100`, once every 100ms, 10FPS. The minimum value is `16`,
 once every 16ms, 60FPS.
 
 ```tsx
-import { LiveblocksProvider } from "@liveblocks/react/suspense";
+import { LiveblocksProvider } from '@liveblocks/react/suspense';
 
 function App() {
   return (

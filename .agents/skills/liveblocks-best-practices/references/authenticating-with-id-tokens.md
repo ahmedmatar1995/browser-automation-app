@@ -1,5 +1,5 @@
 ---
-title: "Authenticating with ID Tokens"
+title: 'Authenticating with ID Tokens'
 ---
 
 ## Authenticating with ID Tokens
@@ -10,7 +10,7 @@ with
 before returning the `body` and `status` from your API endpoint.
 
 ```ts
-import { Liveblocks } from "@liveblocks/node";
+import { Liveblocks } from '@liveblocks/node';
 
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET_KEY!,
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       // organizationId: "acme-corp",
     },
     // Optional, custom user metadata, available in React hooks
-    { userInfo: user.metadata }
+    { userInfo: user.metadata },
   );
 
   return new Response(body, { status });
@@ -48,19 +48,19 @@ will be able to join. You must set a form of permissions, either
 `defaultAccesses`, `groupsAccesses`, or `usersAccesses`.
 
 ```ts
-const room = await liveblocks.getOrCreateRoom("my-room-id", {
+const room = await liveblocks.getOrCreateRoom('my-room-id', {
   // The default room permissions. `[]` for private, `["room:write"]` for public.
   defaultAccesses: [],
 
   // Optional, the room's group ID permissions
   groupsAccesses: {
-    design: ["room:write"],
-    engineering: ["room:presence:write", "room:read"],
+    design: ['room:write'],
+    engineering: ['room:presence:write', 'room:read'],
   },
 
   // Optional, the room's user ID permissions
   usersAccesses: {
-    "my-user-id": ["room:write"],
+    'my-user-id': ['room:write'],
   },
 
   // Optional, custom metadata to attach to the room

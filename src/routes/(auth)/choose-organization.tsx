@@ -1,22 +1,22 @@
-import { OrganizationList } from '@clerk/tanstack-react-start'
-import { auth } from '@clerk/tanstack-react-start/server'
-import { createFileRoute, redirect } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
+import { OrganizationList } from '@clerk/tanstack-react-start';
+import { auth } from '@clerk/tanstack-react-start/server';
+import { createFileRoute, redirect } from '@tanstack/react-router';
+import { createServerFn } from '@tanstack/react-start';
 
 const authStateFn = createServerFn({ method: 'GET' }).handler(async () => {
-  const { isAuthenticated } = await auth()
+  const { isAuthenticated } = await auth();
 
   if (!isAuthenticated) {
-    throw redirect({ to: '/sign-in' })
+    throw redirect({ to: '/sign-in' });
   }
-})
+});
 
 export const Route = createFileRoute('/(auth)/choose-organization')({
   beforeLoad: async () => {
-    await authStateFn()
+    await authStateFn();
   },
   component: Organizations,
-})
+});
 
 function Organizations() {
   return (
@@ -29,5 +29,5 @@ function Organizations() {
         />
       </section>
     </div>
-  )
+  );
 }

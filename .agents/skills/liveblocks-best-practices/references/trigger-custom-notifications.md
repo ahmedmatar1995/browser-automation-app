@@ -1,5 +1,5 @@
 ---
-title: "Trigger custom notifications"
+title: 'Trigger custom notifications'
 ---
 
 # Trigger custom notifications
@@ -10,7 +10,7 @@ comment. However, you can also render completely custom notifications with
 useful for any purpose.
 
 ```tsx
-import { Liveblocks } from "@liveblocks/node";
+import { Liveblocks } from '@liveblocks/node';
 
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET_KEY!,
@@ -18,27 +18,27 @@ const liveblocks = new Liveblocks({
 
 await liveblocks.triggerInboxNotification({
   // The ID of the user that will receive the inbox notification
-  userId: "steven@example.com",
+  userId: 'steven@example.com',
 
   // The custom notification kind, must start with a $
-  kind: "$fileUploaded",
+  kind: '$fileUploaded',
 
   // Custom ID for this specific notification
-  subjectId: "my-file",
+  subjectId: 'my-file',
 
   // Custom data related to the activity that you need to render the inbox notification
   activityData: {
     // Data can be a string, number, or boolean
-    file: "https://example.com/my-file.zip",
+    file: 'https://example.com/my-file.zip',
     size: 256,
     success: true,
   },
 
   // Optional, define the room ID the notification was sent from
-  roomId: "my-room-id",
+  roomId: 'my-room-id',
 
   // Optional, trigger it for a specific organization
-  organizationId: "acme-corp",
+  organizationId: 'acme-corp',
 });
 ```
 
@@ -67,8 +67,8 @@ declare global {
 Render them in your inbox like this:
 
 ```tsx
-import { useInboxNotifications } from "@liveblocks/react/suspense";
-import { InboxNotification } from "@liveblocks/react-ui";
+import { useInboxNotifications } from '@liveblocks/react/suspense';
+import { InboxNotification } from '@liveblocks/react-ui';
 
 const { inboxNotifications } = useInboxNotifications();
 
@@ -100,9 +100,9 @@ Alternatively, structure like this:
 import {
   InboxNotification,
   InboxNotificationCustomKindProps,
-} from "@liveblocks/react-ui";
+} from '@liveblocks/react-ui';
 
-function AlertNotification(props: InboxNotificationCustomKindProps<"$alert">) {
+function AlertNotification(props: InboxNotificationCustomKindProps<'$alert'>) {
   // `title` and `message` are correctly typed, as defined in your config
   const { title, message } = props.inboxNotification.activities[0].data;
 
@@ -140,16 +140,16 @@ notification, and the result will be added to the `activityData` array.
 
 ```ts
 const options = {
-  userId: "steven@example.com",
-  kind: "$fileUploaded",
-  subjectId: "my-file",
+  userId: 'steven@example.com',
+  kind: '$fileUploaded',
+  subjectId: 'my-file',
 };
 
 await liveblocks.triggerInboxNotification({
   ...options,
 
   activityData: {
-    status: "processing",
+    status: 'processing',
   },
 });
 
@@ -157,12 +157,12 @@ await liveblocks.triggerInboxNotification({
   ...options,
 
   activityData: {
-    status: "complete",
+    status: 'complete',
   },
 });
 
 const { data: inboxNotifications } = await liveblocks.getInboxNotifications({
-  userId: "steven@example.com",
+  userId: 'steven@example.com',
 });
 
 // {

@@ -1,20 +1,20 @@
-import { auth } from '@clerk/tanstack-react-start/server'
-import { createFileRoute, redirect } from '@tanstack/react-router'
-import { createServerFn } from '@tanstack/react-start'
-import { Plus, Workflow } from 'lucide-react'
+import { auth } from '@clerk/tanstack-react-start/server';
+import { createFileRoute, redirect } from '@tanstack/react-router';
+import { createServerFn } from '@tanstack/react-start';
+import { Plus, Workflow } from 'lucide-react';
 
-import { Button } from '@/components/ui/button.tsx'
+import { Button } from '@/components/ui/button.tsx';
 
 export const checkAuth = createServerFn().handler(async () => {
-  const { isAuthenticated, orgId } = await auth()
-  if (!isAuthenticated) throw redirect({ to: '/sign-in' })
-  if (!orgId) throw redirect({ to: '/choose-organization' })
-})
+  const { isAuthenticated, orgId } = await auth();
+  if (!isAuthenticated) throw redirect({ to: '/sign-in' });
+  if (!orgId) throw redirect({ to: '/choose-organization' });
+});
 
 export const Route = createFileRoute('/(dashboard)/')({
   component: Home,
   beforeLoad: async () => await checkAuth(),
-})
+});
 
 function Home() {
   return (
@@ -40,5 +40,5 @@ function Home() {
         </Button>
       </section>
     </div>
-  )
+  );
 }

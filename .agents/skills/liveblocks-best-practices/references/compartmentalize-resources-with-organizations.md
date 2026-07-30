@@ -1,5 +1,5 @@
 ---
-title: "Compartmentalize resources with organizations"
+title: 'Compartmentalize resources with organizations'
 ---
 
 # Compartmentalize resources with organizations
@@ -9,30 +9,30 @@ that organization, which can be used like a workspace in your application. Here
 are some examples, note that all are server-side API calls.
 
 ```ts
-const room = await liveblocks.createRoom("my-room-id", {
-  organizationId: "my-organization-id",
+const room = await liveblocks.createRoom('my-room-id', {
+  organizationId: 'my-organization-id',
 });
 
 const { data: rooms, nextCursor } = await liveblocks.getRooms({
-  organizationId: "my-organization-id",
+  organizationId: 'my-organization-id',
 });
 
 await liveblocks.triggerInboxNotification({
-  userId: "steven@example.com",
-  kind: "$fileUploaded",
-  subjectId: "my-file",
+  userId: 'steven@example.com',
+  kind: '$fileUploaded',
+  subjectId: 'my-file',
   activityData: {},
-  organizationId: "my-organization-id",
+  organizationId: 'my-organization-id',
 });
 
 await liveblocks.deleteAllInboxNotifications({
-  userId: "steven@example.com",
-  organizationId: "my-organization-id",
+  userId: 'steven@example.com',
+  organizationId: 'my-organization-id',
 });
 
 const { data, nextCursor } = await liveblocks.getUserRoomSubscriptionSettings({
-  userId: "steven@example.com",
-  organizationId: "my-organization-id",
+  userId: 'steven@example.com',
+  organizationId: 'my-organization-id',
 });
 ```
 
@@ -55,8 +55,8 @@ rooms in other organizations.
 
 ```ts
 const { body, status } = await liveblocks.identifyUser({
-  userId: "olivier@example.com",
-  organizationId: "organization123",
+  userId: 'olivier@example.com',
+  organizationId: 'organization123',
 });
 
 // '{ token: "eyJga7..." }'
@@ -71,15 +71,15 @@ resources inside this organization, even if the token has permissions to rooms
 in other organizations.
 
 ```ts
-const session = liveblocks.prepareSession("olivier@example.com", {
-  organizationId: "organization123",
+const session = liveblocks.prepareSession('olivier@example.com', {
+  organizationId: 'organization123',
 });
 
 // Giving full access to one room
-session.allow("Vu78Rt:design:9Hdu73", session.FULL_ACCESS);
+session.allow('Vu78Rt:design:9Hdu73', session.FULL_ACCESS);
 
 // Give full access to every room with an ID beginning with "Vu78Rt:product:"
-session.allow("Vu78Rt:product:*", session.FULL_ACCESS);
+session.allow('Vu78Rt:product:*', session.FULL_ACCESS);
 
 const { body, status } = await session.authorize();
 ```

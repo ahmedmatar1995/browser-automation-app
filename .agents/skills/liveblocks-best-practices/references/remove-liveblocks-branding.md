@@ -1,5 +1,5 @@
 ---
-title: "Remove Liveblocks branding"
+title: 'Remove Liveblocks branding'
 ---
 
 # Remove Liveblocks branding

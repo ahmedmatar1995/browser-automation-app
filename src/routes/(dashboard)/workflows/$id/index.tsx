@@ -6,7 +6,7 @@ import {
 } from 'lucide-react'
 
 import type { ErrorComponentProps } from '@tanstack/react-router'
-import { createFileRoute, useParams } from '@tanstack/react-router'
+import { createFileRoute, redirect, useParams } from '@tanstack/react-router'
 
 import { Button } from '@/components/ui/button.tsx'
 import {
@@ -19,8 +19,42 @@ import {
 } from '@/components/ui/empty.tsx'
 import { WorkflowShell } from '@/features/Workflows/component/WorkflowShell.tsx'
 import { Room } from '../../../../features/Workflows/component/room'
+import { auth } from '@clerk/tanstack-react-start/server'
+import { createServerFn } from '@tanstack/react-start'
+import { getWorkflow } from '../../../../features/Workflows/data'
+import { liveblocks } from '@/lib/liveblocks'
+
+const checkOrgAuth = createServerFn().handler(async () => {
+  const { orgId } = await auth();
+  if (!orgId) throw redirect({ to: '/' });
+});
+
+const fetchWorkflow = createServerFn({ method: 'GET' })
+  .validator((data: { workflowId: string }) => data)
+  .handler(async ({ data }) => {
+    const { orgId } = await auth();
+    if (!orgId) throw redirect({ to: '/' });
+
+    const workflow = await getWorkflow(orgId, data.workflowId);
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (workflow) {
+      await liveblocks.getOrCreateRoom(data.workflowId, {
+        defaultAccesses: [],
+        groupsAccesses: {
+          [orgId]: ['room:write'],
+        },
+      });
+    }
+
+    return workflow;
+  });
 
 export const Route = createFileRoute('/(dashboard)/workflows/$id/')({
+  beforeLoad: async () => {
+    await checkOrgAuth();
+  },
+  loader: ({ params }) => fetchWorkflow({ data: { workflowId: params.id } }),
   component: RouteComponent,
   pendingComponent: () => {
     return (

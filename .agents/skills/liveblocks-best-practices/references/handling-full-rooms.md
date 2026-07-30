@@ -1,5 +1,5 @@
 ---
-title: "Handling full rooms"
+title: 'Handling full rooms'
 ---
 
 # Handling full rooms
@@ -12,13 +12,13 @@ used inside of
 [`LiveblocksProvider`](https://liveblocks.io/docs/api-reference/liveblocks-react#LiveblocksProvider).
 
 ```tsx
-import { useErrorListener, useThreads } from "@liveblocks/react/suspense";
+import { useErrorListener, useThreads } from '@liveblocks/react/suspense';
 
 // This component is used within `LiveblocksProvider`
 function Component() {
   useErrorListener((error) => {
     if (
-      error.context.type === "ROOM_CONNECTION_ERROR" &&
+      error.context.type === 'ROOM_CONNECTION_ERROR' &&
       error.context.code === 4005
     ) {
       // Room is full, handle this by e.g. redirecting or showing an error component

@@ -1,5 +1,5 @@
 ---
-title: "Tiptap best practices"
+title: 'Tiptap best practices'
 ---
 
 # Tiptap best practices
@@ -22,8 +22,8 @@ to maintain a valid document structure. Without these core nodes, the editor
 will not work correctly and synchronization will fail.
 
 ```tsx
-import { useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import { useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 
 const editor = useEditor({
   extensions: [
@@ -97,9 +97,9 @@ Set `immediatelyRender: false` in your `useEditor` configuration:
 
 ```tsx
 // ✅ CORRECT: Disable server-side rendering for Next.js and other SSR frameworks
-import { useEditor } from "@tiptap/react";
-import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
-import StarterKit from "@tiptap/starter-kit";
+import { useEditor } from '@tiptap/react';
+import { useLiveblocksExtension } from '@liveblocks/react-tiptap';
+import StarterKit from '@tiptap/starter-kit';
 
 function Editor() {
   const liveblocks = useLiveblocksExtension();
@@ -152,8 +152,8 @@ Always enable content validation by setting `enableContentCheck: true` and
 implementing an `onContentError` handler:
 
 ```tsx
-import { useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import { useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 
 const editor = useEditor({
   extensions: [
@@ -172,11 +172,11 @@ const editor = useEditor({
     editor.setEditable(false, false);
 
     // Log the error for debugging
-    console.error("Content validation error:", error);
+    console.error('Content validation error:', error);
 
     // Notify the user that there's an issue
     alert(
-      "There was an error loading this document. The content may be incompatible with the current editor version. The document has been made read-only to prevent data loss."
+      'There was an error loading this document. The content may be incompatible with the current editor version. The document has been made read-only to prevent data loss.',
     );
   },
   // +++
@@ -219,7 +219,7 @@ const editor = useEditor({
   ],
   // ❌ This text will be added to the document every time the editor is loaded
   // +++
-  content: "<p>Default text</p>",
+  content: '<p>Default text</p>',
   // +++
 });
 ```
@@ -231,15 +231,15 @@ The `initialContent` option sets a flag internally and only sets the content the
 
 ```tsx
 // ✅ CORRECT: This only sets content once
-import { useEditor } from "@tiptap/react";
-import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
-import StarterKit from "@tiptap/starter-kit";
+import { useEditor } from '@tiptap/react';
+import { useLiveblocksExtension } from '@liveblocks/react-tiptap';
+import StarterKit from '@tiptap/starter-kit';
 
 function Editor() {
   const liveblocks = useLiveblocksExtension({
     // ✅ This text is only set the first time the room is used
     // +++
-    initialContent: "<p>Default text</p>",
+    initialContent: '<p>Default text</p>',
     // +++
   });
 
@@ -277,15 +277,15 @@ with a unique identifier for each editor. This ensures that each editor
 synchronizes to its own section of the Yjs document.
 
 ```tsx
-import { useEditor } from "@tiptap/react";
-import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
-import StarterKit from "@tiptap/starter-kit";
+import { useEditor } from '@tiptap/react';
+import { useLiveblocksExtension } from '@liveblocks/react-tiptap';
+import StarterKit from '@tiptap/starter-kit';
 
 function EditorOne() {
   const liveblocks = useLiveblocksExtension({
     // Unique identifier for this editor
     // +++
-    field: "editor-1",
+    field: 'editor-1',
     // +++
   });
 
@@ -306,7 +306,7 @@ function EditorTwo() {
   const liveblocks = useLiveblocksExtension({
     // Different unique identifier
     // +++
-    field: "editor-2",
+    field: 'editor-2',
     // +++
   });
 
@@ -347,7 +347,7 @@ The official Tiptap
 
 ```tsx
 // ❌ NEVER DO THIS
-import Image from "@tiptap/extension-image";
+import Image from '@tiptap/extension-image';
 
 const editor = useEditor({
   extensions: [
@@ -376,7 +376,7 @@ Instead of storing images as base64 in the document:
 
 ```tsx
 // ✅ CORRECT: Store only URLs
-import Image from "@tiptap/extension-image";
+import Image from '@tiptap/extension-image';
 
 const editor = useEditor({
   extensions: [
@@ -397,7 +397,7 @@ const editor = useEditor({
 // +++
 editor.commands.setImage({
   // URL only, no base64
-  src: "https://your-storage.com/images/photo.jpg",
+  src: 'https://your-storage.com/images/photo.jpg',
 });
 // +++
 ```
@@ -410,7 +410,7 @@ tab or navigating away, enable the
 option:
 
 ```tsx
-import { RoomProvider } from "@liveblocks/react/suspense";
+import { RoomProvider } from '@liveblocks/react/suspense';
 
 <RoomProvider
   id="my-room"

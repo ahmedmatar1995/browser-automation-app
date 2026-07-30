@@ -1,5 +1,5 @@
 ---
-title: "Performant others and presence"
+title: 'Performant others and presence'
 ---
 
 # Performant others and presence
@@ -14,7 +14,7 @@ returns an array of other users in the room. This array is updated every time
 any users presence changes, which can be many times per second.
 
 ```tsx
-import { useOthers } from "@liveblocks/react/suspense";
+import { useOthers } from '@liveblocks/react/suspense';
 
 // ❌ Updates on every presence change
 function Cursors() {
@@ -48,7 +48,7 @@ Use this in combination with
 to update components only when this user's presence changes.
 
 ```tsx
-import { useOthers } from "@liveblocks/react/suspense";
+import { useOthers } from '@liveblocks/react/suspense';
 
 // ✅ Updates only when users join or leave
 function Cursors() {
@@ -87,7 +87,7 @@ a user typing, and if you'd just like to check if each user is typing or not,
 return an array of their `isTyping` properties.
 
 ```tsx
-import { useOthersMapped } from "@liveblocks/react/suspense";
+import { useOthersMapped } from '@liveblocks/react/suspense';
 
 // ✅ Updates only when a user's `isTyping` property changes
 function Typing() {
@@ -108,13 +108,13 @@ shallow comparison, that checks if the array values have changed, instead of
 checking if the array reference has changed.
 
 ```tsx
-import { shallow, useOthers } from "@liveblocks/react/suspense";
+import { shallow, useOthers } from '@liveblocks/react/suspense';
 
 // Updates when any users presence value changes, but not on every render
 function Typing() {
   const typingUsers = useOthers(
     (others) => others.filter((other) => other.presence.isTyping),
-    shallow // 👈
+    shallow, // 👈
   );
 
   // ...

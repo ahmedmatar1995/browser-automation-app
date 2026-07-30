@@ -1,5 +1,5 @@
 ---
-title: "Add user information"
+title: 'Add user information'
 ---
 
 # Add user information
@@ -17,7 +17,7 @@ properties are NOT used in comment threads, notifications, etc.
 ```ts
 const { status, body } = await liveblocks.identifyUser(
   {
-    userId: "marc@example.com",
+    userId: 'marc@example.com',
 
     // Optional
     // organizationId: "org-id",
@@ -25,13 +25,13 @@ const { status, body } = await liveblocks.identifyUser(
   },
   {
     userInfo: {
-      name: "Marc",
-      color: "#00ff00",
+      name: 'Marc',
+      color: '#00ff00',
 
       // Your custom metadata
       // ...
     },
-  }
+  },
 );
 ```
 
@@ -70,7 +70,7 @@ you must use
 in `LiveblocksProvider`.
 
 ```tsx
-import { LiveblocksProvider } from "@liveblocks/react/suspense";
+import { LiveblocksProvider } from '@liveblocks/react/suspense';
 
 function App() {
   return (
@@ -80,8 +80,8 @@ function App() {
         console.log(userIds);
 
         return [
-          { name: "Marc", avatar: "https://example.com/marc.png" },
-          { name: "Nimesh", avatar: "https://example.com/nimesh.png" },
+          { name: 'Marc', avatar: 'https://example.com/marc.png' },
+          { name: 'Nimesh', avatar: 'https://example.com/nimesh.png' },
         ];
       }}
 
@@ -99,7 +99,7 @@ same length as the `userIds` array. You can also return custom information, for
 example, a user’s `color`:
 
 ```tsx
-import { LiveblocksProvider } from "@liveblocks/react/suspense";
+import { LiveblocksProvider } from '@liveblocks/react/suspense';
 
 function App() {
   return (
@@ -110,9 +110,9 @@ function App() {
 
         return [
           {
-            name: "Marc",
-            avatar: "https://example.com/marc.png",
-            color: "purple",
+            name: 'Marc',
+            avatar: 'https://example.com/marc.png',
+            color: 'purple',
           },
         ];
       }}
@@ -150,7 +150,7 @@ these mentions with
 in `LiveblocksProvider`.
 
 ```tsx
-import { LiveblocksProvider } from "@liveblocks/react/suspense";
+import { LiveblocksProvider } from '@liveblocks/react/suspense';
 
 function App() {
   return (

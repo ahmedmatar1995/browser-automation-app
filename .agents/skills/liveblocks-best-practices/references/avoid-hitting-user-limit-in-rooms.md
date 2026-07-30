@@ -1,5 +1,5 @@
 ---
-title: "Avoid hitting user limit in rooms"
+title: 'Avoid hitting user limit in rooms'
 ---
 
 # Avoid hitting user limit in rooms
@@ -12,7 +12,7 @@ Liveblocks tab after a certain amount of time, helping you avoid hitting the
 limit.
 
 ```tsx
-import { LiveblocksProvider } from "@liveblocks/react/suspense";
+import { LiveblocksProvider } from '@liveblocks/react/suspense';
 
 export function Providers() {
   return (

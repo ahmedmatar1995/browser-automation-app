@@ -1,5 +1,5 @@
 ---
-title: "Type Liveblocks correctly"
+title: 'Type Liveblocks correctly'
 ---
 
 # Type Liveblocks correctly
@@ -54,7 +54,7 @@ export {};
 Here's a real example:
 
 ```ts
-import { LiveList } from "@liveblocks/client";
+import { LiveList } from '@liveblocks/client';
 
 declare global {
   interface Liveblocks {
@@ -82,7 +82,7 @@ declare global {
 
     // Custom events, for useBroadcastEvent, useEventListener
     // Example has two events, using a union
-    RoomEvent: { type: "PLAY" } | { type: "REACTION"; emoji: "🔥" };
+    RoomEvent: { type: 'PLAY' } | { type: 'REACTION'; emoji: '🔥' };
 
     // Custom metadata set on threads, for useThreads, useCreateThread, etc.
     ThreadMetadata: {
@@ -123,7 +123,7 @@ export {};
 Here are Liveblocks parts that are automatically typed using the example types:
 
 ```tsx
-import { useOthers } from "@liveblocks/react/suspense";
+import { useOthers } from '@liveblocks/react/suspense';
 
 const others = useOthers();
 
@@ -131,13 +131,13 @@ others.map((other) => other.presence.cursor.x);
 ```
 
 ```tsx
-import { useStorage } from "@liveblocks/react/suspense";
+import { useStorage } from '@liveblocks/react/suspense';
 
 const storage = useStorage((root) => root.animals);
 ```
 
 ```tsx
-import { useOthers } from "@liveblocks/react/suspense";
+import { useOthers } from '@liveblocks/react/suspense';
 
 const others = useOthers();
 
@@ -145,17 +145,17 @@ others.map((other) => other.info.avatar);
 ```
 
 ```tsx
-import { useEventListener } from "@liveblocks/react/suspense";
+import { useEventListener } from '@liveblocks/react/suspense';
 
 useEventListener((event) => {
-  if (event.type === "PLAY") {
+  if (event.type === 'PLAY') {
     // ...
   }
 });
 ```
 
 ```tsx
-import { useThreads } from "@liveblocks/react/suspense";
+import { useThreads } from '@liveblocks/react/suspense';
 
 const { threads } = useThreads();
 
@@ -163,24 +163,24 @@ threads.map((thread) => thread.metadata.x);
 ```
 
 ```tsx
-import { useRoomInfo } from "@liveblocks/react/suspense";
+import { useRoomInfo } from '@liveblocks/react/suspense';
 
-const { info, error, isLoading } = useRoomInfo("room-id");
+const { info, error, isLoading } = useRoomInfo('room-id');
 
 info.title;
 ```
 
 ```tsx
-import { useGroupInfo } from "@liveblocks/react/suspense";
+import { useGroupInfo } from '@liveblocks/react/suspense';
 
-const { info, error, isLoading } = useGroupInfo("group-id");
+const { info, error, isLoading } = useGroupInfo('group-id');
 
 info.badge;
 ```
 
 ```tsx
-import { useInboxNotifications } from "@liveblocks/react/suspense";
-import { InboxNotification } from "@liveblocks/react-ui";
+import { useInboxNotifications } from '@liveblocks/react/suspense';
+import { InboxNotification } from '@liveblocks/react-ui';
 
 const { inboxNotifications } = useInboxNotifications();
 

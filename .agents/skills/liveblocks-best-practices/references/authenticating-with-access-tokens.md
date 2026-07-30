@@ -1,5 +1,5 @@
 ---
-title: "Authenticating with Access Tokens"
+title: 'Authenticating with Access Tokens'
 ---
 
 ## Authenticating with Access Tokens
@@ -10,7 +10,7 @@ ID tokens). Start this with
 before returning the `body` and `status` from your API endpoint.
 
 ```ts
-import { Liveblocks } from "@liveblocks/node";
+import { Liveblocks } from '@liveblocks/node';
 
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET_KEY!,
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 
       // Optional, custom user metadata
       userInfo: user.metadata,
-    }
+    },
   );
 
   // Use a naming pattern to allow access to rooms with wildcards

@@ -1,5 +1,5 @@
 ---
-title: "Rendering loading components"
+title: 'Rendering loading components'
 ---
 
 # Rendering loading components
@@ -18,8 +18,8 @@ import {
   ClientSideSuspense,
   useThreads,
   useOthers,
-} from "@liveblocks/react/suspense"; // ← /suspense export
-import { ErrorBoundary } from "react-error-boundary";
+} from '@liveblocks/react/suspense'; // ← /suspense export
+import { ErrorBoundary } from 'react-error-boundary';
 
 function Page() {
   return (
@@ -77,8 +77,8 @@ Simple hooks don't need error boundaries, but hooks returning a `{ ... }` format
 do.
 
 ```tsx
-import { useThreads, useOthers } from "@liveblocks/react"; // ← NOT /suspense export
-import { ErrorBoundary } from "react-error-boundary";
+import { useThreads, useOthers } from '@liveblocks/react'; // ← NOT /suspense export
+import { ErrorBoundary } from 'react-error-boundary';
 
 function Page() {
   return (

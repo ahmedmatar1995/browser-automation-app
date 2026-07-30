@@ -1,5 +1,5 @@
 ---
-title: "Multiple text editors"
+title: 'Multiple text editors'
 ---
 
 # Multiple text editors
@@ -8,11 +8,11 @@ Tiptap and BlockNote both support multiple text editors on one page by passing
 values to the `field` property. Think of it like an ID for the current editor.
 
 ```tsx
-import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
+import { useLiveblocksExtension } from '@liveblocks/react-tiptap';
 
 function TextEditor() {
   const liveblocks = useLiveblocksExtension({
-    field: "editor-one",
+    field: 'editor-one',
   });
 
   // ...
@@ -22,16 +22,16 @@ function TextEditor() {
 In real use, you could store each editor's ID in Liveblocks storage:
 
 ```tsx
-import { useStorage, useMutation } from "@liveblocks/react/suspense";
-import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useStorage, useMutation } from '@liveblocks/react/suspense';
+import { useLiveblocksExtension } from '@liveblocks/react-tiptap';
+import { useEditor, EditorContent } from '@tiptap/react';
 
 function TextEditors() {
   const editorIds = useStorage((root) => root.editorIds);
 
   const newEditor = useMutation(({ storage }) => {
     const newId = nanoid();
-    storage.get("editorsIds").push(newId);
+    storage.get('editorsIds').push(newId);
   }, []);
 
   return (
@@ -46,7 +46,7 @@ function TextEditors() {
 
 function TextEditor({ field }: { field: string }) {
   const liveblocks = useLiveblocksExtension({
-    field: "editor-one",
+    field: 'editor-one',
   });
 
   return (
@@ -58,7 +58,7 @@ function TextEditor({ field }: { field: string }) {
 ```
 
 ```ts file="liveblocks.config.ts"
-import { LiveList } from "@liveblocks/client";
+import { LiveList } from '@liveblocks/client';
 
 declare global {
   interface Liveblocks {
@@ -84,14 +84,14 @@ import { LiveblocksProvider } from "@liveblocks/react/suspense";
 BlockNote works in the same way, with this option:
 
 ```tsx
-import { useCreateBlockNoteWithLiveblocks } from "@liveblocks/react-blocknote";
+import { useCreateBlockNoteWithLiveblocks } from '@liveblocks/react-blocknote';
 
 function TextEditor() {
   const editor = useCreateBlockNoteWithLiveblocks(
     {},
     {
-      field: "editor-one",
-    }
+      field: 'editor-one',
+    },
   );
 
   // ...

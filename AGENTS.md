@@ -40,6 +40,7 @@
 - Prefer simple, flat component structures over deeply nested abstractions.
 - Use `useMemo`/`useCallback` sparingly — only for actual performance regressions.
 - Colocate related logic (e.g., server fn + route definition in the same file).
+- Use semicolons at the end of every statement.
 - Avoid premature optimization; write for clarity first.
 - Tailwind v4: use `@theme inline` CSS variables for theming. Avoid hardcoded color values unless it's a deliberate design choice (e.g., `bg-[#1B1B1B]` on the dashboard).
 - CSS custom properties go in `src/styles.css` under `:root` / `.dark`.
@@ -56,6 +57,7 @@
 - Start: srvx serve --entry ./dist/server/server.js --dir . --static ./dist/client --prod
 
 <!-- TRIGGER.DEV SKILLS START -->
+
 ## Trigger.dev agent skills
 
 This project has Trigger.dev agent skills installed in `.agents/skills/`. Before writing or changing Trigger.dev code (background tasks, scheduled tasks, realtime, or chat.agent AI agents), load the most relevant skill: `trigger-authoring-chat-agent`.

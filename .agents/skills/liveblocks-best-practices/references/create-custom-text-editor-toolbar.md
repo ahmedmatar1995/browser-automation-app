@@ -1,5 +1,5 @@
 ---
-title: "Create custom text editor toolbar"
+title: 'Create custom text editor toolbar'
 ---
 
 # Create custom text editor toolbar
@@ -10,9 +10,9 @@ the existing toolbar and Liveblocks components. This works the same way for
 selection.
 
 ```tsx
-import { Toolbar } from "@liveblocks/react-tiptap";
-import { Icon } from "@liveblocks/react-ui";
-import { Editor } from "@tiptap/react";
+import { Toolbar } from '@liveblocks/react-tiptap';
+import { Icon } from '@liveblocks/react-ui';
+import { Editor } from '@tiptap/react';
 
 function CustomToolbar({ editor }: { editor: Editor | null }) {
   return (
@@ -23,12 +23,12 @@ function CustomToolbar({ editor }: { editor: Editor | null }) {
         name="Help"
         icon={<Icon.QuestionMark />}
         shortcut="CMD-H"
-        onClick={() => console.log("help")}
+        onClick={() => console.log('help')}
       />
       <Toolbar.Toggle
         name="Highlight"
         icon={<div>🖊️</div>}
-        active={editor?.isActive("highlight") ?? false}
+        active={editor?.isActive('highlight') ?? false}
         onClick={() => editor?.chain().focus().toggleHighlight().run()}
         disabled={!editor?.can().chain().focus().toggleHighlight().run()}
       />
@@ -135,17 +135,17 @@ import { Icon } from "@liveblocks/react-ui";
 Also the `BlockSelector`:
 
 ```tsx
-import { Toolbar } from "@liveblocks/react-tiptap";
+import { Toolbar } from '@liveblocks/react-tiptap';
 
 <Toolbar editor={editor}>
   <Toolbar.BlockSelector
     items={(defaultItems) => [
       ...defaultItems,
       {
-        name: "Code block",
+        name: 'Code block',
         icon: <div>❮ ❯</div>, // Optional
         // label: <div className="font-mono">Code</div>, // Optional, overwrites `icon` + `name`
-        isActive: (editor) => editor.isActive("codeBlock"),
+        isActive: (editor) => editor.isActive('codeBlock'),
         setActive: (editor) =>
           editor.chain().focus().clearNodes().toggleCodeBlock().run(),
       },
@@ -155,38 +155,38 @@ import { Toolbar } from "@liveblocks/react-tiptap";
 ```
 
 ```tsx
-import { Toolbar } from "@liveblocks/react-tiptap";
+import { Toolbar } from '@liveblocks/react-tiptap';
 
 <Toolbar.BlockSelector
   items={(defaultItems) =>
     defaultItems.map((item) => {
       let label;
 
-      if (item.name === "Text") {
+      if (item.name === 'Text') {
         label = <span>Regular text</span>;
       }
 
-      if (item.name === "Heading 1") {
+      if (item.name === 'Heading 1') {
         label = (
-          <span style={{ fontSize: 18, fontWeight: "bold" }}>Heading 1</span>
+          <span style={{ fontSize: 18, fontWeight: 'bold' }}>Heading 1</span>
         );
       }
 
-      if (item.name === "Heading 2") {
+      if (item.name === 'Heading 2') {
         label = (
-          <span style={{ fontSize: 16, fontWeight: "bold" }}>Heading 2</span>
+          <span style={{ fontSize: 16, fontWeight: 'bold' }}>Heading 2</span>
         );
       }
 
-      if (item.name === "Heading 3") {
+      if (item.name === 'Heading 3') {
         label = (
-          <span style={{ fontSize: 15, fontWeight: "bold" }}>Heading 3</span>
+          <span style={{ fontSize: 15, fontWeight: 'bold' }}>Heading 3</span>
         );
       }
 
-      if (item.name === "Blockquote") {
+      if (item.name === 'Blockquote') {
         label = (
-          <span style={{ borderLeft: "3px solid gray", paddingLeft: 8 }}>
+          <span style={{ borderLeft: '3px solid gray', paddingLeft: 8 }}>
             Blockquote
           </span>
         );
@@ -206,9 +206,9 @@ Remember to export from `"@liveblocks/react-lexical"` for Lexical. Export and
 use `{ FloatingToolbar }` if you'd like to modify the floating version.
 
 ```tsx
-import { FloatingToolbar, Toolbar } from "@liveblocks/react-lexical";
-import { Icon } from "@liveblocks/react-ui";
-import { Editor } from "@tiptap/react";
+import { FloatingToolbar, Toolbar } from '@liveblocks/react-lexical';
+import { Icon } from '@liveblocks/react-ui';
+import { Editor } from '@tiptap/react';
 
 function CustomToolbar({ editor }: { editor: Editor | null }) {
   return (
@@ -219,12 +219,12 @@ function CustomToolbar({ editor }: { editor: Editor | null }) {
         name="Help"
         icon={<Icon.QuestionMark />}
         shortcut="CMD-H"
-        onClick={() => console.log("help")}
+        onClick={() => console.log('help')}
       />
       <Toolbar.Toggle
         name="Highlight"
         icon={<div>🖊️</div>}
-        active={editor?.isActive("highlight") ?? false}
+        active={editor?.isActive('highlight') ?? false}
         onClick={() => editor?.chain().focus().toggleHighlight().run()}
         disabled={!editor?.can().chain().focus().toggleHighlight().run()}
       />

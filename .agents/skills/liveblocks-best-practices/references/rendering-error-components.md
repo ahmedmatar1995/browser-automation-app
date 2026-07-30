@@ -1,5 +1,5 @@
 ---
-title: "Rendering error components"
+title: 'Rendering error components'
 ---
 
 # Rendering error components
@@ -25,8 +25,8 @@ import {
   ClientSideSuspense,
   useThreads,
   useOthers,
-} from "@liveblocks/react/suspense"; // ← /suspense export
-import { ErrorBoundary } from "react-error-boundary";
+} from '@liveblocks/react/suspense'; // ← /suspense export
+import { ErrorBoundary } from 'react-error-boundary';
 
 function Page() {
   return (
@@ -81,8 +81,8 @@ paginated hooks like `useThreads` and `useInboxNotifications` return an
 `isLoading` state.
 
 ```tsx
-import { useThreads, useOthers } from "@liveblocks/react"; // ← NOT /suspense export
-import { ErrorBoundary } from "react-error-boundary";
+import { useThreads, useOthers } from '@liveblocks/react'; // ← NOT /suspense export
+import { ErrorBoundary } from 'react-error-boundary';
 
 function Page() {
   return (

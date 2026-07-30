@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { ModeToggle } from '@/components/theme-toggle'
+import { ModeToggle } from '@/components/theme-toggle';
 import {
   OrganizationSwitcher,
   useAuth,
   UserButton,
-} from '@clerk/tanstack-react-start'
-import { useEffect, useState } from 'react'
+} from '@clerk/tanstack-react-start';
+import { useEffect, useState } from 'react';
 
 import {
   Sidebar,
@@ -14,22 +14,22 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarTrigger,
-} from '@/components/ui/sidebar.tsx'
-import { listWorkflowsServerFn } from '@/features/Workflows/actions'
-import { WorkflowNav } from '@/features/Workflows/component/WorkflowNav.tsx'
-import type { Workflow } from '@/lib/db/schema'
+} from '@/components/ui/sidebar.tsx';
+import { listWorkflowsServerFn } from '@/features/Workflows/actions';
+import { WorkflowNav } from '@/features/Workflows/component/WorkflowNav.tsx';
+import type { Workflow } from '@/lib/db/schema';
 
 export function AppSidebar() {
-  const { orgId } = useAuth()
-  const [workflows, setWorkflows] = useState<Workflow[]>([])
+  const { orgId } = useAuth();
+  const [workflows, setWorkflows] = useState<Workflow[]>([]);
 
   useEffect(() => {
     if (!orgId) {
-      setWorkflows([])
-      return
+      setWorkflows([]);
+      return;
     }
-    listWorkflowsServerFn({ data: { orgId } }).then(setWorkflows)
-  }, [orgId])
+    listWorkflowsServerFn({ data: { orgId } }).then(setWorkflows);
+  }, [orgId]);
 
   return (
     <Sidebar
@@ -49,9 +49,10 @@ export function AppSidebar() {
                 organizationSwitcherTrigger:
                   'h-13 w-full! rounded-2xl px-2.5! transition-colors group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:justify-center! group-data-[collapsible=icon]:p-0! group-data-[collapsible=icon]:hidden!',
                 organizationPreviewMainIdentifier:
-                  'text-[15px]! font-bold! tracking-[-0.02em]! text-sidebar-foreground! group-data-[collapsible=icon]:hidden! capitalize!',
+                  'text-[15px]! font-bold! tracking-[-0.02em]! text-white! group-data-[collapsible=icon]:hidden! capitalize!',
                 organizationSwitcherTriggerIcon:
-                  'text-sidebar-foreground/55! group-data-[collapsible=icon]:hidden!',
+                  'text-white! group-data-[collapsible=icon]:hidden!',
+                organizationSwitcherPopoverCard:"bg-background! text-foreground!",
               },
             }}
           />
@@ -79,5 +80,5 @@ export function AppSidebar() {
         />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 ---
-name: "liveblocks-best-practices"
-description: "Use this skill when building, debugging, or answering questions
+name: 'liveblocks-best-practices'
+description: 'Use this skill when building, debugging, or answering questions
   about Liveblocks. Liveblocks gives you the building blocks and infrastructure
   to enable people and AI to work together inside your app, powering realtime
   collaboration.
@@ -18,11 +18,11 @@ description: "Use this skill when building, debugging, or answering questions
   useInboxNotifications, useAiChats.
 
   Common issues are related to authentication (ID tokens vs access tokens),
-  permissions, room limits, connection errors, user info."
-license: "Apache License 2.0"
+  permissions, room limits, connection errors, user info.'
+license: 'Apache License 2.0'
 metadata:
-  author: "liveblocks"
-  version: "1.0.0"
+  author: 'liveblocks'
+  version: '1.0.0'
 ---
 
 # Liveblocks best practices

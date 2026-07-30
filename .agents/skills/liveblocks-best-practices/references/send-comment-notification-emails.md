@@ -1,5 +1,5 @@
 ---
-title: "Send comment notification emails"
+title: 'Send comment notification emails'
 ---
 
 # Send comment notification emails

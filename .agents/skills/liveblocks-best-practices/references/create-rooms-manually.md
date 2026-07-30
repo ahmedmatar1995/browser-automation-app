@@ -1,5 +1,5 @@
 ---
-title: "Create rooms manually"
+title: 'Create rooms manually'
 ---
 
 # Create rooms manually
@@ -11,7 +11,7 @@ for this and do standard
 [error handling](https://liveblocks.io/docs/api-reference/liveblocks-node#error-handling).
 
 ```tsx
-import { Liveblocks } from "@liveblocks/node";
+import { Liveblocks } from '@liveblocks/node';
 
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET_KEY!,
@@ -27,7 +27,7 @@ export function fetchRoom(roomId: string) {
 
       // Optional, custom metadata to attach to the room
       metadata: {
-        title: "Untitled",
+        title: 'Untitled',
       },
 
       // Optional, the room's group ID permissions
@@ -48,7 +48,7 @@ export function fetchRoom(roomId: string) {
     if (error instanceof LiveblocksError) {
       // Handle specific LiveblocksError cases
       console.error(
-        `Error getting or creating room: ${error.status} - ${error.message}`
+        `Error getting or creating room: ${error.status} - ${error.message}`,
       );
       switch (
         error.status

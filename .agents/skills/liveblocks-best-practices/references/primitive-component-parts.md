@@ -1,5 +1,5 @@
 ---
-title: "Primitive component parts"
+title: 'Primitive component parts'
 ---
 
 # Primivite component parts
@@ -11,8 +11,8 @@ takes a comment’s body, and turns it into readable text, with links and
 mentions.
 
 ```tsx
-import { CommentData } from "@liveblocks/client";
-import { Comment } from "@liveblocks/react-ui/primitives";
+import { CommentData } from '@liveblocks/client';
+import { Comment } from '@liveblocks/react-ui/primitives';
 
 // Render a custom comment body
 function MyComment({ comment }: { comment: CommentData }) {
@@ -20,7 +20,7 @@ function MyComment({ comment }: { comment: CommentData }) {
     <Comment.Body
       body={comment.body}
       className="text-gray-500"
-      style={{ width: "300px" }}
+      style={{ width: '300px' }}
       onPointerEnter={() => {}}
     />
   );
@@ -32,8 +32,8 @@ property. In this example, we’re modifying links in the comment, so that they�
 purple and bold.
 
 ```tsx
-import { CommentData } from "@liveblocks/client";
-import { Comment, CommentBodyLinkProps } from "@liveblocks/react-ui/primitives";
+import { CommentData } from '@liveblocks/client';
+import { Comment, CommentBodyLinkProps } from '@liveblocks/react-ui/primitives';
 
 // Render a custom comment body
 function MyComment({ comment }: { comment: CommentData }) {
@@ -52,7 +52,7 @@ function MyComment({ comment }: { comment: CommentData }) {
 // Render a purple link in the comment, e.g. "https://liveblocks.io"
 function Link({ href, children }: CommentBodyLinkProps) {
   return (
-    <Comment.Link href={href} style={{ color: "purple", fontWeight: 700 }}>
+    <Comment.Link href={href} style={{ color: 'purple', fontWeight: 700 }}>
       {children}
     </Comment.Link>
   );

@@ -1,5 +1,5 @@
 ---
-title: "DevTools extension"
+title: 'DevTools extension'
 ---
 
 # DevTools extension

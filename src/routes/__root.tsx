@@ -1,13 +1,13 @@
-import { ClerkProvider } from '@clerk/tanstack-react-start'
-import { TanStackDevtools } from '@tanstack/react-devtools'
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
+import { ClerkProvider } from '@clerk/tanstack-react-start';
+import { TanStackDevtools } from '@tanstack/react-devtools';
+import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router';
+import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 
-import { Toaster } from '@/components/ui/sonner'
+import { Toaster } from '@/components/ui/sonner';
 
-import { ThemeProvider } from '@/components/theme-provider'
-import { getThemeServerFn } from '@/lib/theme'
-import appCss from '../styles.css?url'
+import { ThemeProvider } from '@/components/theme-provider';
+import { getThemeServerFn } from '@/lib/theme';
+import appCss from '../styles.css?url';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -32,10 +32,10 @@ export const Route = createRootRoute({
   }),
   loader: async () => await getThemeServerFn(),
   shellComponent: RootDocument,
-})
+});
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const theme = Route.useLoaderData()
+  const theme = Route.useLoaderData();
   return (
     <html lang="en" className={theme} data-theme={theme}>
       <head>
@@ -60,5 +60,5 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

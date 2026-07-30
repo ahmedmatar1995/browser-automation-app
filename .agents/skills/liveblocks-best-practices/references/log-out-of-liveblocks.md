@@ -1,5 +1,5 @@
 ---
-title: "Log out of Liveblocks"
+title: 'Log out of Liveblocks'
 ---
 
 # Log out of Liveblocks
@@ -15,7 +15,7 @@ client.logout();
 In React, get your client like this:
 
 ```tsx
-import { useClient } from "@liveblocks/react/suspense";
+import { useClient } from '@liveblocks/react/suspense';
 
 const client = useClient();
 ```

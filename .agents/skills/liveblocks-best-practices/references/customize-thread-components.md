@@ -1,5 +1,5 @@
 ---
-title: "Customize thread components"
+title: 'Customize thread components'
 ---
 
 # Customize thread components
@@ -9,8 +9,8 @@ You can deeply customize
 component by inserting your own UI into various slots.
 
 ```tsx
-import { Comment, Thread } from "@liveblocks/react-ui";
-import { ThreadData } from "@liveblocks/client";
+import { Comment, Thread } from '@liveblocks/react-ui';
+import { ThreadData } from '@liveblocks/client';
 
 // ✅ Keeps thread functionality
 function CustomThread({ thread }: { thread: ThreadData }) {
@@ -70,8 +70,8 @@ Always prefer the method above. Don't customize your thread like this, as you
 will losing basic `Thread` functionality, such as unread message status:
 
 ```tsx
-import { Comment } from "@liveblocks/react-ui";
-import { ThreadData } from "@liveblocks/client";
+import { Comment } from '@liveblocks/react-ui';
+import { ThreadData } from '@liveblocks/client';
 
 // ❌ Loses Thread functionality
 function CustomThread({ thread }: { thread: ThreadData }) {

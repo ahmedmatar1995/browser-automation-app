@@ -2,12 +2,12 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '@/components/ui/resizable.tsx'
-import { Canvas } from '@/features/Workflows/component/canvas.tsx'
-import { RightSidebar } from '@/features/Workflows/component/right-sidebar.tsx'
+} from '@/components/ui/resizable.tsx';
+import { Canvas } from '@/features/Workflows/component/canvas.tsx';
+import { RightSidebar } from '@/features/Workflows/component/right-sidebar.tsx';
 
 interface WorkflowShellProps {
-  workflowId: string
+  workflowId: string;
 }
 
 export function WorkflowShell({ workflowId }: WorkflowShellProps) {
@@ -31,5 +31,5 @@ export function WorkflowShell({ workflowId }: WorkflowShellProps) {
         <RightSidebar />
       </ResizablePanel>
     </ResizablePanelGroup>
-  )
+  );
 }

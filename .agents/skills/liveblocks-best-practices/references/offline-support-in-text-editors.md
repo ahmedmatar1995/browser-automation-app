@@ -1,5 +1,5 @@
 ---
-title: "Offline support in text editors"
+title: 'Offline support in text editors'
 ---
 
 # Offline support in text editors
@@ -11,7 +11,7 @@ changes will be synchronized, without any load spinner. Enable this by passing a
 `offlineSupport_experimental` value.
 
 ```tsx
-import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
+import { useLiveblocksExtension } from '@liveblocks/react-tiptap';
 
 function TextEditor() {
   const liveblocks = useLiveblocksExtension({
@@ -29,15 +29,15 @@ editor with `useThreads`, you must place this inside a separate component and
 wrap it in `ClientSideSuspense`.
 
 ```tsx
-"use client";
+'use client';
 
-import { ClientSideSuspense, useThreads } from "@liveblocks/react/suspense";
+import { ClientSideSuspense, useThreads } from '@liveblocks/react/suspense';
 import {
   useLiveblocksExtension,
   AnchoredThreads,
   FloatingComposer,
-} from "@liveblocks/react-tiptap";
-import { Editor, EditorContent, useEditor } from "@tiptap/react";
+} from '@liveblocks/react-tiptap';
+import { Editor, EditorContent, useEditor } from '@tiptap/react';
 
 export function TiptapEditor() {
   const liveblocks = useLiveblocksExtension({
@@ -75,14 +75,14 @@ function Threads({ editor }: { editor: Editor }) {
 Here's the BlockNote option, it works in the same way:
 
 ```tsx
-import { useCreateBlockNoteWithLiveblocks } from "@liveblocks/react-blocknote";
+import { useCreateBlockNoteWithLiveblocks } from '@liveblocks/react-blocknote';
 
 function TextEditor() {
   const editor = useCreateBlockNoteWithLiveblocks(
     {},
     {
       offlineSupport_experimental: true,
-    }
+    },
   );
 
   // ...
