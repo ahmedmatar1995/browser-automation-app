@@ -5,9 +5,9 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 
 import { Toaster } from '@/components/ui/sonner'
 
+import { ThemeProvider } from '@/components/theme-provider'
 import { getThemeServerFn } from '@/lib/theme'
 import appCss from '../styles.css?url'
-import { ThemeProvider } from '@/components/theme-provider'
 
 export const Route = createRootRoute({
   head: () => ({

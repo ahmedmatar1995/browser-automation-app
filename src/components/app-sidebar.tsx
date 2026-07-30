@@ -1,16 +1,13 @@
 'use client'
 
+import { ModeToggle } from '@/components/theme-toggle'
 import {
-  useAuth,
   OrganizationSwitcher,
+  useAuth,
   UserButton,
 } from '@clerk/tanstack-react-start'
-import { ModeToggle } from '@/components/theme-toggle'
 import { useEffect, useState } from 'react'
 
-import { listWorkflowsServerFn } from '@/features/Workflows/actions'
-import { WorkflowNav } from '@/features/Workflows/component/WorkflowNav.tsx'
-import type { Workflow } from '@/lib/db/schema'
 import {
   Sidebar,
   SidebarContent,
@@ -18,6 +15,9 @@ import {
   SidebarHeader,
   SidebarTrigger,
 } from '@/components/ui/sidebar.tsx'
+import { listWorkflowsServerFn } from '@/features/Workflows/actions'
+import { WorkflowNav } from '@/features/Workflows/component/WorkflowNav.tsx'
+import type { Workflow } from '@/lib/db/schema'
 
 export function AppSidebar() {
   const { orgId } = useAuth()

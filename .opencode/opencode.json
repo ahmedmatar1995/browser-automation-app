@@ -18,10 +18,11 @@
       "find-skills"
     ]
   },
-  "mcpServers": {
+  "mcp": {
     "trigger": {
-      "command": "npx",
-      "args": [
+      "type": "local",
+      "command": [
+        "npx",
         "trigger.dev@latest",
         "mcp",
         "--project-ref",
