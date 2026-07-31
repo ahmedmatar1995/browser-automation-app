@@ -5,7 +5,10 @@ import {
   Controls,
   MiniMap,
   ReactFlow,
+  Panel
 } from '@xyflow/react';
+
+import { AvatarStack } from "@liveblocks/react-ui"
 
 import '@liveblocks/react-flow/styles.css';
 import '@liveblocks/react-ui/styles.css';
@@ -73,6 +76,9 @@ export function Canvas() {
       <Controls />
       <MiniMap />
       <Cursors />
+      <Panel position='top-right'>
+         <AvatarStack />
+      </Panel>
     </ReactFlow>
   );
 }

@@ -16,6 +16,7 @@ import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as dashboardIndexRouteImport } from './routes/(dashboard)/index'
 import { Route as LiveblocksAuthRouteImport } from './routes/liveblocks/auth'
+import { Route as LiveblocksUsersRouteImport } from './routes/liveblocks/users'
 import { Route as dashboardWorkflowsIdIndexRouteImport } from './routes/(dashboard)/workflows/$id/index'
 
 const authRouteRoute = authRouteRouteImport.update({
@@ -51,6 +52,11 @@ const LiveblocksAuthRoute = LiveblocksAuthRouteImport.update({
   path: '/liveblocks/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LiveblocksUsersRoute = LiveblocksUsersRouteImport.update({
+  id: '/liveblocks/users',
+  path: '/liveblocks/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const dashboardWorkflowsIdIndexRoute =
   dashboardWorkflowsIdIndexRouteImport.update({
     id: '/workflows/$id/',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
   '/liveblocks/auth': typeof LiveblocksAuthRoute
+  '/liveblocks/users': typeof LiveblocksUsersRoute
   '/': typeof dashboardIndexRoute
   '/workflows/$id/': typeof dashboardWorkflowsIdIndexRoute
 }
@@ -71,6 +78,7 @@ export interface FileRoutesByTo {
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
   '/liveblocks/auth': typeof LiveblocksAuthRoute
+  '/liveblocks/users': typeof LiveblocksUsersRoute
   '/': typeof dashboardIndexRoute
   '/workflows/$id': typeof dashboardWorkflowsIdIndexRoute
 }
@@ -82,6 +90,7 @@ export interface FileRoutesById {
   '/(auth)/sign-in': typeof authSignInRoute
   '/(auth)/sign-up': typeof authSignUpRoute
   '/liveblocks/auth': typeof LiveblocksAuthRoute
+  '/liveblocks/users': typeof LiveblocksUsersRoute
   '/(dashboard)/': typeof dashboardIndexRoute
   '/(dashboard)/workflows/$id/': typeof dashboardWorkflowsIdIndexRoute
 }
@@ -92,6 +101,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/liveblocks/auth'
+    | '/liveblocks/users'
     | '/'
     | '/workflows/$id/'
   fileRoutesByTo: FileRoutesByTo
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/liveblocks/auth'
+    | '/liveblocks/users'
     | '/'
     | '/workflows/$id'
   id:
@@ -110,6 +121,7 @@ export interface FileRouteTypes {
     | '/(auth)/sign-in'
     | '/(auth)/sign-up'
     | '/liveblocks/auth'
+    | '/liveblocks/users'
     | '/(dashboard)/'
     | '/(dashboard)/workflows/$id/'
   fileRoutesById: FileRoutesById
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   authRouteRoute: typeof authRouteRouteWithChildren
   dashboardRouteRoute: typeof dashboardRouteRouteWithChildren
   LiveblocksAuthRoute: typeof LiveblocksAuthRoute
+  LiveblocksUsersRoute: typeof LiveblocksUsersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LiveblocksAuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/liveblocks/users': {
+      id: '/liveblocks/users'
+      path: '/liveblocks/users'
+      fullPath: '/liveblocks/users'
+      preLoaderRoute: typeof LiveblocksUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(dashboard)/workflows/$id/': {
       id: '/(dashboard)/workflows/$id/'
       path: '/workflows/$id'
@@ -215,6 +235,7 @@ const rootRouteChildren: RootRouteChildren = {
   authRouteRoute: authRouteRouteWithChildren,
   dashboardRouteRoute: dashboardRouteRouteWithChildren,
   LiveblocksAuthRoute: LiveblocksAuthRoute,
+  LiveblocksUsersRoute: LiveblocksUsersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

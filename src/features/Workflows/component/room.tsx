@@ -18,7 +18,23 @@ export function Room({
   return (
     <LiveblocksProvider
       authEndpoint="/liveblocks/auth"
-
+      resolveUsers={async ({ userIds }) => {
+        try {
+          const res = await fetch('/liveblocks/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userIds }),
+          });
+          if (!res.ok) return undefined;
+          const users = (await res.json()) as Array<{
+            name: string;
+            avatar: string;
+          } | null>;
+          return users.map((u) => u ?? undefined);
+        } catch {
+          return undefined;
+        }
+      }}
     >
       <RoomProvider id={roomId}>
         <ClientSideSuspense fallback={<div className='flex min-h-svh items-center justify-center'>
